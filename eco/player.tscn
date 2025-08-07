@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://c4lmh3ghjvhpn"]
+
+[ext_resource type="Script" uid="uid://2r7laygusfkr" path="res://controls_buffer.gd" id="1_4flbx"]
+[ext_resource type="Script" uid="uid://cjmx3li62efbu" path="res://player.gd" id="1_i3pqv"]
+[ext_resource type="Script" uid="uid://c6qd7ltalisf4" path="res://entity_health.gd" id="2_onrkg"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_i3pqv"]
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_i3pqv")
+metadata/_custom_type_script = "uid://cjmx3li62efbu"
+
+[node name="Controls" type="Node" parent="."]
+script = ExtResource("1_4flbx")
+metadata/_custom_type_script = "uid://2r7laygusfkr"
+
+[node name="Health" type="Node" parent="."]
+script = ExtResource("2_onrkg")
+metadata/_custom_type_script = "uid://c6qd7ltalisf4"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_i3pqv")
