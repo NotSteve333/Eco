@@ -1,8 +1,11 @@
 extends Node
+class_name RoomManager
 
 var active_room: Room
 var loaded_rooms: Array[Room]
+
 signal spawn_in(spawn_point: Vector2)
+signal update_rooms(rooms: Array[Room], time: float)
 
 func change_room(room_id: String, exit_id: String) -> void:
 	for r in loaded_rooms:
@@ -17,8 +20,6 @@ func change_room(room_id: String, exit_id: String) -> void:
 
 func enter_room(exit_id: String) -> void:
 	spawn_in.emit(active_room.get_exit_location(exit_id))
-
-
 
 func update_loaded_rooms(new_rooms: Array[String], just_left: Room) -> void:
 	var new_loaded_rooms: Array[Room] = []
@@ -38,4 +39,5 @@ func update_loaded_rooms(new_rooms: Array[String], just_left: Room) -> void:
 		else: 
 			new_scene = just_left
 		new_loaded_rooms.append(new_scene)
+	update_rooms.emit(new_loaded_rooms, GlobalTime.get_total_seconds())
 	loaded_rooms = new_loaded_rooms

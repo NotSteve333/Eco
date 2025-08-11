@@ -24,4 +24,8 @@ func average(vals: Array) -> float:
 func bool_to_unit(b: bool) -> int:
 	return (2 * int(b)) - 1
 
-func binomial_dist(x: float, n:)
+func binomial_dist(n: int, p: float) -> int:
+	var mean = n * p
+	var npq = mean * (1 - p)
+	var stdev = sqrt(npq)
+	return int(rng.randfn(mean, stdev))

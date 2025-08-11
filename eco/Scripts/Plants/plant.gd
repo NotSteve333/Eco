@@ -25,13 +25,12 @@ signal spread(can_spread: bool)
 
 # Attempts to up the stage based on current conditions and the random value this tick. 
 # Checks if the plant is eligable to spread this tick
-func update_plant(n: int, rand_val: float) -> int:
-	if !mature:
-		var updates = max(MathUtil.normal_dist(rand_val, ), species_data.mature_stage)
-	else:
-		
-		
-	return num_ticks
+func update_plant(n: int) -> void:
+	if can_grow:
+		var growth_updates = MathUtil.binomial_dist(n, growth_chance)
+		grow(growth_updates)
+	if mature:
+		var spread_updates = MathUtil.binomial_dist(n, growth_conditions[num_growth_factors])
 
 func get_num_successes(n: int, rand_val: float, p: float) -> int:
 	var np = n * p
@@ -39,8 +38,7 @@ func get_num_successes(n: int, rand_val: float, p: float) -> int:
 	return MathUtil.normal_dist(rand_val, np, npq)
 
 func grow(stage: int) -> void:
-	var 
-	growth_stage += 
+	growth_stage = max(growth_stage + stage, species_data.total_stages)
 	if growth_stage >= species_data.mature_stage:
 		mature = true
 	if growth_stage >= species_data.total_stages:

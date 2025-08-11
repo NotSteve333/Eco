@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://dvmyre6ckkk1p"]
+
+[ext_resource type="Script" uid="uid://dkc0u7mwi0p8f" path="res://Scripts/Plants/plant_manager.gd" id="1_pyidc"]
+[ext_resource type="Script" uid="uid://dgbv2gxf1ve6r" path="res://Scripts/Rooms/room_manager.gd" id="2_vvh5c"]
+
+[node name="Root" type="Node"]
+
+[node name="RoomManager" type="Node" parent="."]
+script = ExtResource("2_vvh5c")
+metadata/_custom_type_script = "uid://dgbv2gxf1ve6r"
+
+[node name="PlantManager" type="Node" parent="."]
+script = ExtResource("1_pyidc")
+metadata/_custom_type_script = "uid://dkc0u7mwi0p8f"
+
+[connection signal="update_rooms" from="RoomManager" to="PlantManager" method="_on_update_rooms"]

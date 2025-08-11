@@ -17,7 +17,6 @@ config/icon="res://icon.svg"
 [autoload]
 
 GlobalTime="*res://global_time.gd"
-PlantManager="*res://Scripts/Plants/plant_manager.gd"
 MathUtil="*res://math_util.gd"
 PlantUtils="*res://Scripts/Plants/plant_utils.gd"
 SceneDictionary="*res://scene_dictionary.gd"
