@@ -3,6 +3,7 @@ class_name Room
 
 @export var room_id: String
 
+var last_update: float
 var exits_dict: Dictionary
 
 signal change_room(target: String, exit_id: String)
@@ -12,6 +13,9 @@ func _ready() -> void:
 	for e in exits:
 		exits_dict[e.exit_id] = e
 		e.receive_exit.connect(player_exit)
+
+func get_exit_location(exit_id: String) -> Vector2:
+	return exits_dict[exit_id].get_spawn_point()
 
 func get_neighbors() -> PackedStringArray:
 	var neighbors = []

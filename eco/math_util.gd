@@ -1,6 +1,11 @@
 extends Resource
 
+@onready var rng = RandomNumberGenerator.new()
+
 const E: float = 2.718282
+
+func _ready() -> void:
+	rng.seed = int(10003 * (cur_time - int(cur_time)))
 
 func normal_dist(x: float, mean: float, sig: float) -> float:
 	var numer = -1.0 * pow((x - mean), 2)
@@ -18,3 +23,5 @@ func average(vals: Array) -> float:
 
 func bool_to_unit(b: bool) -> int:
 	return (2 * int(b)) - 1
+
+func binomial_dist(x: float, n:)

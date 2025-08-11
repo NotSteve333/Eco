@@ -11,7 +11,7 @@ var plant_id: int
 # Environmental conditions, as they pertain to this species
 var growth_conditions: PackedFloat64Array
 # Average of all environmental conditions
-var growth_factor: float
+var growth_chance: float
 # Current level of growth
 var growth_stage: int
 # Able to grow this tick
@@ -25,22 +25,22 @@ signal spread(can_spread: bool)
 
 # Attempts to up the stage based on current conditions and the random value this tick. 
 # Checks if the plant is eligable to spread this tick
-func update_plant(np: float) -> bool:
-	var npc = np * growth_factor
-	if can_grow and tick_val > (1 - species_data.base_growth_chance):
-		grow()
-	if mature:
-		var tick_polination = growth_conditions[num_growth_factors]
-		if tick_polination - (1 - species_data.base_spread_chance) * MathUtil.bool_to_unit(can_spread):
-			can_spread = !can_spread
-			spread.emit(can_spread)
-	return false
-	
-func simulate_plant_ticks(npc: float) -> int:
-	
+func update_plant(n: int, rand_val: float) -> int:
+	if !mature:
+		var updates = max(MathUtil.normal_dist(rand_val, ), species_data.mature_stage)
+	else:
+		
+		
+	return num_ticks
 
-func grow() -> void:
-	growth_stage += 1
+func get_num_successes(n: int, rand_val: float, p: float) -> int:
+	var np = n * p
+	var npq = np * (1 - p)
+	return MathUtil.normal_dist(rand_val, np, npq)
+
+func grow(stage: int) -> void:
+	var 
+	growth_stage += 
 	if growth_stage >= species_data.mature_stage:
 		mature = true
 	if growth_stage >= species_data.total_stages:
@@ -53,9 +53,9 @@ func grow() -> void:
 
 # Computes the overall conditions
 func compute_growth_factor(environment: PackedFloat64Array) -> float:
-	growth_factor = 0.0
-	growth_factor = MathUtil.average(growth_conditions.slice(0, num_growth_factors))
-	return growth_factor
+	growth_chance = 0.0
+	growth_chance = MathUtil.average(growth_conditions.slice(0, num_growth_factors))
+	return growth_chance * species_data.base_growth_chance
 	
 # Computes the quality of a single condition
 func compute_single_condition(cond_num: int, val: float) -> float:
