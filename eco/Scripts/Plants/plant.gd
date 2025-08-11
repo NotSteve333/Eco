@@ -25,8 +25,8 @@ signal spread(can_spread: bool)
 
 # Attempts to up the stage based on current conditions and the random value this tick. 
 # Checks if the plant is eligable to spread this tick
-func plant_tick(rand_val: float) -> bool:
-	var tick_val = rand_val * growth_factor
+func update_plant(np: float) -> bool:
+	var npc = np * growth_factor
 	if can_grow and tick_val > (1 - species_data.base_growth_chance):
 		grow()
 	if mature:
@@ -35,6 +35,9 @@ func plant_tick(rand_val: float) -> bool:
 			can_spread = !can_spread
 			spread.emit(can_spread)
 	return false
+	
+func simulate_plant_ticks(npc: float) -> int:
+	
 
 func grow() -> void:
 	growth_stage += 1
