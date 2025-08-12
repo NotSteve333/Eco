@@ -20,7 +20,6 @@ GlobalTime="*res://global_time.gd"
 MathUtil="*res://math_util.gd"
 PlantUtils="*res://Scripts/Plants/plant_utils.gd"
 SceneDictionary="*res://scene_dictionary.gd"
-RandUtil="*res://rand_util.gd"
 
 [input]
 

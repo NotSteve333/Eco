@@ -5,3 +5,9 @@
 [node name="FirstRoom" type="Node2D"]
 script = ExtResource("1_4tgcj")
 metadata/_custom_type_script = "uid://closnh0s0jmm"
+
+[node name="Exits" type="Node" parent="."]
+
+[node name="Plants" type="Node" parent="."]
+
+[node name="Background" type="Node2D" parent="."]

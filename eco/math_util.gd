@@ -1,11 +1,12 @@
 extends Resource
 
-@onready var rng = RandomNumberGenerator.new()
+var rng: RandomNumberGenerator
 
 const E: float = 2.718282
 
 func _ready() -> void:
-	rng.seed = int(10003 * (cur_time - int(cur_time)))
+	rng = RandomNumberGenerator.new()
+	rng.seed = int(10003 * (Time.get_ticks_usec() - int(Time.get_ticks_usec())))
 
 func normal_dist(x: float, mean: float, sig: float) -> float:
 	var numer = -1.0 * pow((x - mean), 2)

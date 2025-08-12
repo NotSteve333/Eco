@@ -20,3 +20,5 @@ metadata/_custom_type_script = "uid://c6qd7ltalisf4"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_i3pqv")
+
+[node name="Camera2D" type="Camera2D" parent="."]
