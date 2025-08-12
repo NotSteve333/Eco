@@ -1,6 +1,8 @@
 extends Node2D
+# Specific instance of a plant
 class_name Plant
 
+# Data storing specific data about the species this plant belongs to
 @export var species_data: PlantSpeciesData
 
 # Number of factors influencing growth chance
@@ -21,11 +23,12 @@ var can_grow: bool
 # Grown enough to potentially produce
 var mature: bool
 
+# Ticks that have succeeded a spread
 signal spread(num_spreads: int, species: String)
 signal die(location: Vector2)
 
-# Attempts to up the stage based on current conditions and the random value this tick. 
-# Checks if the plant is eligable to spread this tick
+# Simulates n number of ticks.
+# TO FIX: include large scale/historic factors
 func update_plant(n: int) -> void:
 	var growth_updates = MathUtil.binomial_dist(n, growth_chance)
 	grow(growth_updates)
@@ -33,11 +36,7 @@ func update_plant(n: int) -> void:
 		var spread_updates = MathUtil.binomial_dist(n, growth_conditions[num_growth_factors])
 		spread.emit(spread_updates, species_data.plant_species_name)
 
-func get_num_successes(n: int, rand_val: float, p: float) -> int:
-	var np = n * p
-	var npq = np * (1 - p)
-	return MathUtil.normal_dist(rand_val, np, npq)
-
+# Grow the appropriate number of stages
 func grow(stages: int) -> void:
 	growth_stage = max(growth_stage + stages, species_data.total_stages)
 	if growth_stage >= species_data.mature_stage:
