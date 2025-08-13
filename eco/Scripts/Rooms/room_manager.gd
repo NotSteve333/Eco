@@ -28,6 +28,7 @@ func enter_room(exit_id: String) -> void:
 	spawn_in.emit(active_room.get_exit_location(exit_id))
 
 # Move rooms, instantiate, and free rooms based on change in scope
+# Note: Consider ordering result based on proximity to entrance 
 func update_loaded_rooms(new_rooms: Array[String], just_left: Room) -> void:
 	var new_loaded_rooms: Array[Room] = []
 	

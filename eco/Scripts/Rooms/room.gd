@@ -6,11 +6,11 @@ class_name Room
 @export var room_id: String
 # Size/Shape of room
 @export var camera_bounds: Vector4
+# Exits to other rooms
+@export var exits_dict: Dictionary
 
 # Last time this room was updated
 var last_update: float
-# Exits to other rooms
-var exits_dict: Dictionary
 
 # Player is switching to target via exit_id
 signal change_room(target: String, exit_id: String)
@@ -22,13 +22,6 @@ func get_plants() -> Array[Node]:
 		return plants_node.get_children()
 	else:
 		return []
-
-# Set up exit dictionary. Could be hardcoded?
-func _ready() -> void:
-	var exits = $Exits.get_children()
-	for e in exits:
-		exits_dict[e.exit_id] = e
-		e.receive_exit.connect(player_exit)
 
 func get_last_update() -> float:
 	return last_update

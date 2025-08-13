@@ -12,9 +12,6 @@ class_name RoomExit
 # Player is leaving from this exit
 signal player_exit(my_id: String)
 
-func _ready() -> void:
-	$Area2D.body_entered.connect(recieve_exit)
-
 # Signal linkage
 func recieve_exit(body: Node2D) -> void:
 	if body is Player:

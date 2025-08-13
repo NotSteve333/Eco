@@ -6,3 +6,9 @@ enum SurfaceType {
 	ROCK,
 	WATER
 }
+
+enum EventType {
+	WATER,
+	LIGHT,
+	TEMP
+}
