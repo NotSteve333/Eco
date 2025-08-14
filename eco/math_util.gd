@@ -1,8 +1,8 @@
 extends Node
 
-var rng: RandomNumberGenerator
-
 const E: float = 2.718282
+
+var rng: RandomNumberGenerator
 
 # Set up random
 func _ready() -> void:
@@ -11,10 +11,8 @@ func _ready() -> void:
 
 # Sample from a normal distribution with a known value
 func normal_dist(x: float, mean: float, sig: float) -> float:
-	var numer = -1.0 * pow((x - mean), 2)
-	var denom = 2.0 * pow(sig, 2)
-	var expo = numer / denom
-	return pow(E, expo)
+	var diff = (x - mean)
+	return exp(-1.0 * mean * mean / (2.0 * sig * sig))
 
 func average(vals: Array) -> float:
 	var total = 0.0

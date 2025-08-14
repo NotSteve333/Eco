@@ -17,6 +17,8 @@ var rooms: Array[Room] = []
 var cur_room: Room
 var cur_update_time: float
 
+signal finish_room(room_id: String)
+
 func _ready() -> void:
 	var cur_time = GlobalTime.get_total_seconds()
 
@@ -29,13 +31,7 @@ func _process(_delta: float) -> void:
 		
 		# Finish processing a room
 		if cur_room_amt <= 0:
-			cur_room_amt = plants_in_room_queues[-1]
-			plants_in_room_queues.remove_at(-1)
-			if cur_room:
-				cur_room.set_last_update(cur_global_time)
-			cur_room = rooms[-1]
-			rooms.remove_at(-1)
-			cur_update_time = cur_room.get_last_update()
+			next_room()
 			
 		# Process a plant
 		var plant = plants_update_queue.pop_back()
@@ -48,15 +44,27 @@ func _process(_delta: float) -> void:
 		if Time.get_ticks_usec() - start_time >= max_update_duration:
 			return
 
-func get_conditions(position: Vector2) -> PackedFloat64Array:
-	return []
+func next_room() -> void:
+	if cur_room:
+		finish_room.emit(cur_room.room_id)
+	cur_room_amt = plants_in_room_queues[-1]
+	plants_in_room_queues.remove_at(-1)
+	cur_room = rooms[-1]
+	rooms.remove_at(-1)
+	cur_update_time = cur_room.get_last_update()
 
-func _on_update_rooms(rooms: Array[Room], time: float) -> void:
-	for r in rooms:
-		var delta = r.get_last_update()
-		var num_ticks = delta / tick_interval
-		var new_plants = r.get_plants()
-		plants_update_queue.append(new_plants)
-		plants_in_room_queues.append(new_plants.size())
-		rooms.append(r)
+func get_region_conditions() -> Triple:
+	return cur_room.conditions_triple
+
+func get_local_conditions(position: Vector2) -> PackedFloat64Array: 
+	return []
+	
+# Recieve an entire room to process
+func room_ready(r: Room) -> void:
+	var new_plants = r.get_plants()
+	plants_update_queue.append(new_plants)
+	var num_plants = new_plants.size()
+	plants_in_room_queues.append(num_plants)
+	total_plants_in_queue += num_plants
+	rooms.append(r)
 		

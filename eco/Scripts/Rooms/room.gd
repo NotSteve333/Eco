@@ -8,12 +8,35 @@ class_name Room
 @export var camera_bounds: Vector4
 # Exits to other rooms
 @export var exits_dict: Dictionary
+# Watershed region this room resides in
+@export var water_region: Region
+# Light region this room resides in
+@export var light_region: Region
+# Temperaure region this room resides in
+@export var temp_region: Region
+# Polinator region this room resides in
+@export var pol_region: Region
 
 # Last time this room was updated
 var last_update: float
+# Historic events since last_update
+var conditions_triple: Triple
 
 # Player is switching to target via exit_id
 signal change_room(target: String, exit_id: String)
+signal plants_ready(plants: Array[Node])
+
+func update(_time: float) -> void:
+	if conditions_triple:
+		conditions_triple.purge_triple_array_tuples()
+	conditions_triple = copy_conditions()
+	plants_ready.emit(room_id)
+
+func copy_conditions() -> Triple:
+	var water_events = water_region.get_events_since(last_update, room_id)
+	var light_events = light_region.get_events_since(last_update, room_id)
+	var temp_events = temp_region.get_events_since(last_update, room_id)
+	return Triple.new(water_events, light_events, temp_events)
 
 # Returns plants in this room
 func get_plants() -> Array[Node]:

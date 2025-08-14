@@ -16,7 +16,7 @@ signal player_exit(my_id: String)
 func recieve_exit(body: Node2D) -> void:
 	if body is Player:
 		player_exit.emit(exit_id)
-		
+
 func get_spawn_point() -> Vector2:
 	return spawn_point
 

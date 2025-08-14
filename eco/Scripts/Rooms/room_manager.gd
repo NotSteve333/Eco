@@ -5,46 +5,64 @@ class_name RoomManager
 # Room the player is in
 var active_room: Room
 # Rooms in scope (adjacent to current)
-var loaded_rooms: Array[Room]
+# Format: loaded_rooms[room_id] = Room
+var loaded_rooms: Dictionary
 
 # Short room change animation?
 signal spawn_in(spawn_point: Vector2)
-# Weather/Animal/Plant/Fungi Managers
-signal update_rooms(rooms: Array[Room], time: float)
+# Room is ready for plant_manager to process
+signal send_room_to_plant_manager(room: Room)
 
 # Change the current room and spawn in the player accordingly
 func change_room(room_id: String, exit_id: String) -> void:
-	for r in loaded_rooms:
-		if r.room_id == room_id:
+	for r_id in loaded_rooms:
+		if r_id == room_id:
 			remove_child(active_room)
+			var r = loaded_rooms[r_id]
 			r.change_room.connect(change_room)
 			update_loaded_rooms(r.get_neighbors(), active_room)
 			active_room = r
+			update_rooms()
 			add_child(active_room)
 			enter_room(exit_id)
 			return
 
+# plant_manager has finished with the plants in this room
+func finished_plants(room_id: String) -> void:
+	loaded_rooms[room_id].set_last_update(GlobalTime.get_total_seconds())
+
+# Play enter room animation
 func enter_room(exit_id: String) -> void:
 	spawn_in.emit(active_room.get_exit_location(exit_id))
 
+# Initiate update chain for each room
+func update_rooms() -> void:
+	for r_id in loaded_rooms:
+		loaded_rooms[r_id].update(GlobalTime.get_total_seconds())
+
+# Tell the plant_manager to start processing plants in this room
+func send_plants_to_manager(room_id: String) -> void:
+	send_room_to_plant_manager.emit(loaded_rooms[room_id])
+
 # Move rooms, instantiate, and free rooms based on change in scope
-# Note: Consider ordering result based on proximity to entrance 
+# Note: Consider ordering result based on proximity to entrance
 func update_loaded_rooms(new_rooms: Array[String], just_left: Room) -> void:
-	var new_loaded_rooms: Array[Room] = []
+	var new_loaded_rooms: Dictionary
 	
 	# Check old scope
-	for r in loaded_rooms:
-		var id = r.room_id
+	for r_id in loaded_rooms:
 		
 		# Move rooms still in scope
-		if id in new_rooms:
-			new_loaded_rooms.append(r)
-			new_rooms.erase(id)
+		if r_id in new_rooms:
+			var r = loaded_rooms[r_id]
+			r.plants_ready.connect(send_plants_to_manager)
+			new_loaded_rooms[r_id] = r
+			new_rooms.erase(r_id)
 			
 		# Remove rooms which have left scope
 		else:
-			r.queue_free()
-		loaded_rooms.erase(r)
+			loaded_rooms[r_id].queue_free()
+		loaded_rooms.erase(r_id)
 	
 	# Add rooms which have entered scope
 	for n in new_rooms:
@@ -56,8 +74,7 @@ func update_loaded_rooms(new_rooms: Array[String], just_left: Room) -> void:
 		# Special case for the room we just left
 		else: 
 			new_scene = just_left
-		new_loaded_rooms.append(new_scene)
-	
-	# Consider ordering rooms  based on exit distance? Prioritization
-	update_rooms.emit(new_loaded_rooms, GlobalTime.get_total_seconds())
+		new_scene.plants_ready.connect(send_plants_to_manager)
+		new_loaded_rooms[n] = new_scene
+		
 	loaded_rooms = new_loaded_rooms

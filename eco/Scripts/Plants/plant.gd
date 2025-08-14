@@ -10,8 +10,6 @@ const num_growth_factors = 3
 
 # Identifies plant instance
 var plant_id: int
-# Last time when this plant was update. Determines number of ticks to process
-var last_update: float
 # Environmental conditions, as they pertain to this species
 var growth_conditions: PackedFloat64Array
 # Average of all environmental conditions
