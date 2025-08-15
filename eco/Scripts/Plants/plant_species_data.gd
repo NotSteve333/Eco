@@ -18,6 +18,5 @@ var base_spread_chance: float
 var surface_type: PlantUtils.SurfaceType
 
 var total_stages: int
-var edible_stage_range: Vector2
-var mature_stage: int
+var mature_range: Vector2i
 var sprites: Array[Sprite2D]

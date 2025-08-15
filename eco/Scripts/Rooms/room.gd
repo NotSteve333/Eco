@@ -33,6 +33,9 @@ func update(_time: float) -> void:
 func get_region_conditions() -> Dictionary:
 	return conditions_dict
 
+func get_local_conditions(pos: Vector2) -> Vector3:
+	return Vector3.ZERO
+	
 # Compile all events into a dictionary of vec3s
 func combine_conditions() -> Dictionary:
 	var water_events = water_region.get_events_since(last_update, room_id)
@@ -55,7 +58,15 @@ func combine_conditions() -> Dictionary:
 			cur_time = temp_events[t].x
 			t += 1
 		combine_events[cur_time] = new_cond_vec
-	return combine_events
+	return fix_start_time(last_update, combine_events)
+
+# Cuts out the first chunk of time between
+func fix_start_time(start: float, cond_dict: Dictionary) -> Dictionary:
+	var dict_start = min(cond_dict.keys())
+	if dict_start < start:
+		cond_dict[start] = cond_dict[dict_start]
+		cond_dict.erase(dict_start)
+	return cond_dict
 
 # Returns plants in this room
 func get_plants() -> Array[Node]:

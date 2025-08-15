@@ -14,6 +14,9 @@ func normal_dist(x: float, mean: float, sig: float) -> float:
 	var diff = (x - mean)
 	return exp(-1.0 * mean * mean / (2.0 * sig * sig))
 
+func range_to_nums(start: float, end: float, interval: float) -> int:
+	return int(abs(end - start) / interval)
+
 func average(vals: Array) -> float:
 	var total = 0.0
 	var amt = 0.0
@@ -28,8 +31,5 @@ func bool_to_unit(b: bool) -> int:
 
 # Actually a random sampling of a normal distribution approximating a binomial
 # No, I didn't check if this was a valid approximation. Fuck stats
-func binomial_dist(n: int, p: float) -> int:
-	var mean = n * p
-	var npq = mean * (1 - p)
-	var stdev = sqrt(npq)
-	return int(rng.randfn(mean, stdev))
+func binomial_dist(mean: float, sig2: float) -> int:
+	return int(rng.randfn(mean, sig2))
