@@ -1,10 +1,10 @@
-extends Node
+extends Resource
 # Large area which manages long term environmental effects for several rooms.
 class_name Region
 
 # Name of region for identification purposes
-@export var region_id: String
-@export var events_type: PlantUtils.EventType
+var region_id: String
+var events_type: PlantUtils.EventType
 
 # Rooms within this region
 # Format: rooms_info[room_id] = last_update

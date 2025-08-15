@@ -17,6 +17,9 @@ func normal_dist(x: float, mean: float, sig: float) -> float:
 func range_to_nums(start: float, end: float, interval: float) -> int:
 	return int(abs(end - start) / interval)
 
+func vec3_from_vec4(v4: Vector4) -> Vector3:
+	return Vector3(v4.x, v4.y, v4.z)
+
 func average(vals: Array) -> float:
 	var total = 0.0
 	var amt = 0.0
