@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://cpu2yr0fglapj"]
+[gd_scene load_steps=4 format=3 uid="uid://cpu2yr0fglapj"]
 
 [ext_resource type="Script" uid="uid://closnh0s0jmm" path="res://Scripts/Rooms/room.gd" id="1_4tgcj"]
 [ext_resource type="PackedScene" uid="uid://c75hkin8bp6a2" path="res://room_exit.tscn" id="2_a04uu"]
+[ext_resource type="Texture2D" uid="uid://dgeooqpt1rl18" path="res://First Scen3e.png" id="3_kb36q"]
 
 [node name="FirstRoom" type="Node2D"]
 script = ExtResource("1_4tgcj")
@@ -16,5 +17,8 @@ exit_id = "exit1"
 [node name="Plants" type="Node" parent="."]
 
 [node name="Background" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Background"]
+texture = ExtResource("3_kb36q")
 
 [connection signal="player_exit" from="Exits/RoomExit" to="." method="player_exit"]
