@@ -10,7 +10,7 @@ const max_update_duration: float = 15000.0
 var plants_update_queue: Array[Plant] = []
 var total_plants_in_queue: int
 # Overhead for determining what room we're working on
-var plants_in_room_queues: PackedInt64Array = []
+var plants_in_room_queues: Array[int] = []
 var cur_room_amt: int = -1
 # Last update for the current room
 var rooms: Array[Room] = []
@@ -47,17 +47,15 @@ func _process(_delta: float) -> void:
 func next_room() -> void:
 	if cur_room:
 		finish_room.emit(cur_room.room_id)
-	cur_room_amt = plants_in_room_queues[-1]
-	plants_in_room_queues.remove_at(-1)
-	cur_room = rooms[-1]
-	rooms.remove_at(-1)
+	cur_room_amt = plants_in_room_queues.pop_back()
+	cur_room = rooms.pop_back()
 	cur_update_time = cur_room.get_last_update()
 
-func get_region_conditions() -> Triple:
-	return cur_room.conditions_triple
+func get_region_conditions() -> Dictionary:
+	return cur_room.get_region_conditions()
 
-func get_local_conditions(position: Vector2) -> PackedFloat64Array: 
-	return []
+func get_local_conditions(position: Vector2) -> Vector3: 
+	return Vector3.ZERO
 	
 # Recieve an entire room to process
 func room_ready(r: Room) -> void:

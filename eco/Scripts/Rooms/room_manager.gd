@@ -2,6 +2,8 @@ extends Node
 # Managers which rooms are updated and moves the player between them
 class_name RoomManager
 
+# @export var room_update_budget: float = 15000.0
+
 # Room the player is in
 var active_room: Room
 # Rooms in scope (adjacent to current)

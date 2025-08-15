@@ -20,23 +20,42 @@ class_name Room
 # Last time this room was updated
 var last_update: float
 # Historic events since last_update
-var conditions_triple: Triple
+var conditions_dict: Dictionary
 
 # Player is switching to target via exit_id
 signal change_room(target: String, exit_id: String)
 signal plants_ready(plants: Array[Node])
 
 func update(_time: float) -> void:
-	if conditions_triple:
-		conditions_triple.purge_triple_array_tuples()
-	conditions_triple = copy_conditions()
+	conditions_dict = combine_conditions()
 	plants_ready.emit(room_id)
 
-func copy_conditions() -> Triple:
+func get_region_conditions() -> Dictionary:
+	return conditions_dict
+
+# Compile all events into a dictionary of vec3s
+func combine_conditions() -> Dictionary:
 	var water_events = water_region.get_events_since(last_update, room_id)
 	var light_events = light_region.get_events_since(last_update, room_id)
 	var temp_events = temp_region.get_events_since(last_update, room_id)
-	return Triple.new(water_events, light_events, temp_events)
+	var combine_events: Dictionary
+	var w = 0
+	var l = 0
+	var t = 0
+	var cur_time: float
+	for i in range(water_events.size() + light_events.size() + temp_events.size()):
+		var new_cond_vec = Vector3(water_events[w].y, light_events[l].y, temp_events[t].y)
+		if water_events[w] < light_events[l] and water_events[w] < temp_events[t]:
+			cur_time = water_events[w].x
+			w += 1
+		elif light_events[l] < water_events[w] and light_events[l] < temp_events[t]:
+			cur_time = light_events[l].x
+			l += 1
+		else:
+			cur_time = temp_events[t].x
+			t += 1
+		combine_events[cur_time] = new_cond_vec
+	return combine_events
 
 # Returns plants in this room
 func get_plants() -> Array[Node]:
