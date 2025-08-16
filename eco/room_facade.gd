@@ -13,7 +13,11 @@ func set_data(data: Data) -> void:
 	room_id = data.facade_id
 
 func finish_loading() -> void:
+	super()
 	request_load.emit(data.get_plants_data())
+
+func add_plant_child(plant: PlantFacade) -> void:
+	$Plants.add_child(plant)
 
 func write_to_data() -> void:
 	pass

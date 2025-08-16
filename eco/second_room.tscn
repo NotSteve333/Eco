@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://bycs04w2ra0aq"]
+
+[ext_resource type="Script" uid="uid://c5or3l62fkv5v" path="res://room_facade.gd" id="1_tgcou"]
+
+[node name="SecondRoom" type="Node2D"]
+script = ExtResource("1_tgcou")
+metadata/_custom_type_script = "uid://c5or3l62fkv5v"
+
+[node name="Node" type="Node" parent="."]
+
+[node name="Node2" type="Node" parent="."]

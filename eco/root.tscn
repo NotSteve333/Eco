@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dkc0u7mwi0p8f" path="res://Scripts/Plants/plant_manager.gd" id="1_pyidc"]
 [ext_resource type="Script" uid="uid://dgbv2gxf1ve6r" path="res://Scripts/Rooms/room_manager.gd" id="2_vvh5c"]
-[ext_resource type="PackedScene" uid="uid://c4lmh3ghjvhpn" path="res://player.tscn" id="3_vvh5c"]
+[ext_resource type="Script" uid="uid://dgmimxdcjt3xb" path="res://load_manager.gd" id="3_vvh5c"]
 
 [node name="Root" type="Node"]
 
@@ -14,4 +14,10 @@ metadata/_custom_type_script = "uid://dgbv2gxf1ve6r"
 script = ExtResource("1_pyidc")
 metadata/_custom_type_script = "uid://dkc0u7mwi0p8f"
 
-[node name="Player" parent="." instance=ExtResource("3_vvh5c")]
+[node name="LoadManager" type="Node" parent="."]
+script = ExtResource("3_vvh5c")
+metadata/_custom_type_script = "uid://dgmimxdcjt3xb"
+
+[connection signal="done_with_room" from="RoomManager" to="LoadManager" method="unload_facade"]
+[connection signal="send_room_to_plant_manager" from="RoomManager" to="PlantManager" method="room_ready"]
+[connection signal="finish_room" from="PlantManager" to="RoomManager" method="finished_plants"]

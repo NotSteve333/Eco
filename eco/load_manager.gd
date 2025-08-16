@@ -31,7 +31,7 @@ func _process(_delta: float) -> void:
 			0:
 				data_to_load = load_queue.pop_back()
 				load_queue_size -= 1
-				facade_path = data_to_load.get_facade()
+				facade_path = SceneDictionary.RoomScenes[data_to_load.get_facade()]
 				load_stage = 1
 				continue
 			1:
@@ -45,6 +45,9 @@ func _process(_delta: float) -> void:
 				new_facade_scene.request_load.connect(add_data_to_queue)
 				new_facade_scene.finish_loading()
 				load_stage = 0
+				# Clumsy, but should work?
+				if new_facade_scene is PlantFacade:
+					loaded_scenes[data_to_load.facade_id].add_plant_child(new_facade_scene)
 				continue
 
 # Immediately load a Facade, skipping the queue.
@@ -60,6 +63,8 @@ func quick_load(data: Data) -> Facade:
 	var q_facade_scene = load(q_facade_path).instantiate()
 	q_facade_scene.set_data(data_to_load)
 	loaded_scenes[q_facade_scene.get_id()] = q_facade_scene
+	q_facade_scene.request_load.connect(add_data_to_queue)
+	q_facade_scene.finish_loading()
 	return q_facade_scene
 
 # Jumps the queue to get a Facade loaded immediately
@@ -80,9 +85,10 @@ func need_facade(data: Data, facade_id: String) -> Facade:
 
 # Done with a Facade, remove it
 func unload_facade(facade_id: String) -> void:
-	loaded_scenes[facade_id].write_to_data()
-	loaded_scenes[facade_id].queue_free()
-	loaded_scenes.erase(facade_id)
+	if loaded_scenes.has(facade_id):
+		loaded_scenes[facade_id].write_to_data()
+		loaded_scenes[facade_id].queue_free()
+		loaded_scenes.erase(facade_id)
 
 # Queue up more data for their facades to be loaded.
 # Note: Supports either Array[Data] or Data

@@ -10,13 +10,13 @@ var active_room: RoomFacade
 # Note: Contains RoomData resources.
 var loaded_rooms: Dictionary
 var load_room_queue: Array[RoomData]
-var load_room_queue_amt: int = 15000.0
-var max_update_duration: float
+var load_room_queue_amt: int
+var max_update_duration: float = 15000.0
 
 # Short room change animation?
 signal spawn_in(spawn_point: Vector2)
 # Room is ready for plant_manager to process
-signal send_room_to_plant_manager(room: RoomData)
+signal send_room_to_plant_manager(r: RoomData)
 # Tell the load manager to free associated assets
 signal done_with_room(room_id: String)
 

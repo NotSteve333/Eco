@@ -12,8 +12,10 @@ func set_data(init_data: Data) -> void:
 
 # LoadManager has finished setup
 func finish_loading() -> void:
-	pass
+	data.set_facade(self)
 
+func unload() -> void:
+	data.set_facade(null)
 
 func get_id() -> String:
 	return ""

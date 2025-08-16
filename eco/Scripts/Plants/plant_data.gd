@@ -8,6 +8,7 @@ class_name PlantData
 # Identifies plant instance
 var plant_id: int
 # Where the plant is with respect to it's room
+var room_id: String
 var position_in_room: Vector2
 # Environmental conditions, as they pertain to this species
 var growth_conditions: Vector4

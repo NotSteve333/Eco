@@ -10,9 +10,6 @@ var health_bar: Health
 var growth_stage: int
 # Grown enough to potentially produce
 var mature: bool
-
-func _init(data: PlantData) -> void:
-	plant_data = data
 	
 func write_to_data() -> void:
 	plant_data.growth_stage = growth_stage
