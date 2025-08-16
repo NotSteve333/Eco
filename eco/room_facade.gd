@@ -3,9 +3,23 @@ extends Facade
 class_name RoomFacade
 
 var room_data: RoomData
+var room_id: String
 
-func _init(data: RoomData):
-	room_data = data
+# Player is switching to target via exit_id
+signal change_room(target: String, exit_id: String)
+
+func set_data(data: Data) -> void:
+	super(data)
+	room_id = data.facade_id
+
+func finish_loading() -> void:
+	request_load.emit(data.get_plants_data())
 
 func write_to_data() -> void:
 	pass
+
+# Player is leaving, get info for switch
+func player_exit(exit_id: String) -> void:
+	var active_exit = data.exits_dict[exit_id]
+	var target = active_exit.get_other_end(room_id)
+	change_room.emit(target, exit_id)

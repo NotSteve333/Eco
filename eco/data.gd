@@ -9,7 +9,7 @@ var facade_id: String
 func get_data_to_load() -> void:
 	pass
 	
-func get_facade() -> String:
+func get_facade_id() -> String:
 	return facade_id
 
 func save() -> void:

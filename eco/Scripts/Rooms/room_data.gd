@@ -24,8 +24,6 @@ var last_update: float
 # Historic events since last_update
 var conditions_dict: Dictionary
 
-# Player is switching to target via exit_id
-signal change_room(target: String, exit_id: String)
 signal room_data_ready(id: String)
 
 func update() -> void:
@@ -97,9 +95,3 @@ func get_neighbors() -> PackedStringArray:
 		if !(neighbor in neighbors):
 			neighbors.append(neighbor)
 	return neighbors
-
-# Player is leaving, get info for switch
-func player_exit(exit_id: String) -> void:
-	var active_exit = exits_dict[exit_id]
-	var target = active_exit.get_other_end(room_id)
-	change_room.emit(target, exit_id)

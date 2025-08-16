@@ -5,11 +5,21 @@ class_name Facade
 
 var data: Data
 
+signal request_load(datas: Variant)
+
 func set_data(init_data: Data) -> void:
 	data = init_data
 
+# LoadManager has finished setup
+func finish_loading() -> void:
+	pass
+
+
 func get_id() -> String:
 	return ""
+	
+func get_data() -> Data:
+	return data
 
 func write_to_data() -> void:
 	pass
