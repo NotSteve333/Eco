@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://c5v6x8bpyhmv0"]
+
+[ext_resource type="PackedScene" uid="uid://c4lmh3ghjvhpn" path="res://player.tscn" id="1_j2haq"]
+[ext_resource type="Texture2D" uid="uid://bwme0m4d6g0ut" path="res://icon.svg" id="2_ag7ol"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j2haq"]
+size = Vector2(549, 20)
+
+[node name="ParallaxTest" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("1_j2haq")]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(0, 84)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(1.5, 0)
+shape = SubResource("RectangleShape2D_j2haq")
+
+[node name="Icon" type="Sprite2D" parent="."]
+position = Vector2(-231, 10)
+texture = ExtResource("2_ag7ol")
+
+[node name="Icon2" type="Sprite2D" parent="."]
+position = Vector2(280, 10)
+texture = ExtResource("2_ag7ol")
+
+[node name="Background" type="Node2D" parent="."]

@@ -1,4 +1,4 @@
-extends AnimatedSprite2D
+extends Facade
 # Visual counterpart to a PlantData
 class_name PlantFacade
 

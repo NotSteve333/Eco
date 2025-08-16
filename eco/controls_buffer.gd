@@ -1,21 +1,26 @@
 extends Node
 class_name Controls
 
-@export var buffer_size: int
+@export var buffer_size: int = 5
 @export var buffer_actions: PackedStringArray = ["jump", "action_1", "action_2"]
 
-var buffer: PackedStringArray
+@export var buffer: PackedStringArray
 var direction: Vector2
 
+func get_direction() -> Vector2:
+	return direction
+
+# Set up buffer
 func _ready() -> void:
 	for i in range(buffer_size):
 		buffer.append("none")
 
+# Direction is often used by Player with only the x value, but why not track everything?
 func _process(_delta: float) -> void:
 	var dir_x = Input.get_axis("left", "right")
 	var dir_y = Input.get_axis("up", "down")
-	direction = Vector2(dir_x, dir_y).normalized()
-	
+	direction = Vector2(dir_x, dir_y)
+
 func _physics_process(_delta: float) -> void:
 	advance_buffer()
 

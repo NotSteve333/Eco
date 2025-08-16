@@ -1,4 +1,4 @@
-extends Node
+extends Manager
 # Managers which rooms are updated and moves the player between them
 class_name RoomManager
 

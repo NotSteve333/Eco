@@ -1,4 +1,4 @@
-extends Resource
+extends Data
 # Data for a specific instance of a plant
 class_name PlantData
 

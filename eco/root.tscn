@@ -15,5 +15,3 @@ script = ExtResource("1_pyidc")
 metadata/_custom_type_script = "uid://dkc0u7mwi0p8f"
 
 [node name="Player" parent="." instance=ExtResource("3_vvh5c")]
-
-[connection signal="update_rooms" from="RoomManager" to="PlantManager" method="_on_update_rooms"]

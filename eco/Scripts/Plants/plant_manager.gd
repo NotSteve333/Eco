@@ -1,4 +1,5 @@
-extends Node
+extends Manager
+# Manages plants
 class_name PlantManager
 
 const tick_interval: float = .2

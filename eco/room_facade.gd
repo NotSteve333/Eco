@@ -1,4 +1,4 @@
-extends Node2D
+extends Facade
 # Visual counterpart to RoomData
 class_name RoomFacade
 

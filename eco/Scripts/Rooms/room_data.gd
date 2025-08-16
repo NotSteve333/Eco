@@ -1,4 +1,4 @@
-extends Resource
+extends Data
 # Space which entities reside in, screens, levels
 class_name RoomData
 
