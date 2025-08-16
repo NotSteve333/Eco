@@ -15,7 +15,8 @@ normal_texture = ExtResource("4_8ww3s")
 color = Color(0.589096, 0.589096, 0.589095, 1)
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
-position = Vector2(655, -108)
+visible = false
+position = Vector2(229, 17)
 scale = Vector2(9.76563, 5.86523)
 energy = 0.93
 shadow_color = Color(0, 0, 0.364706, 0)
