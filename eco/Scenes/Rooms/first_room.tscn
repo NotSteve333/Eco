@@ -13,7 +13,7 @@ metadata/_custom_type_script = "uid://c5or3l62fkv5v"
 
 [node name="RoomExit" parent="Exits" instance=ExtResource("2_a04uu")]
 position = Vector2(1951, 6)
-scale = Vector2(8.6316, 453.153)
+scale = Vector2(5, 100)
 exit_id = "exit1"
 connection = ExtResource("3_jovsq")
 

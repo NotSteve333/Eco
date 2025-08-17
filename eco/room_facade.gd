@@ -2,14 +2,18 @@ extends Facade
 # Visual counterpart to RoomData
 class_name RoomFacade
 
-var room_data: RoomData
+@export var camera_bounds: Vector4
 var room_id: String
 
 # Player is switching to target via exit_id
 signal change_room(target: String, exit_id: String)
 
+func get_room_dimensions() -> Vector2:
+	return Vector2(camera_bounds.z - camera_bounds.x, camera_bounds.w - camera_bounds.y)
+
 func set_data(data: Data) -> void:
 	super(data)
+	camera_bounds = data.camera_bounds
 	room_id = data.facade_id
 
 func finish_loading() -> void:
