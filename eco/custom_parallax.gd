@@ -23,7 +23,7 @@ func update_params() -> void:
 	background_span_ratios = Vector2(background_dimensions.x / camera_dimensions.x, background_dimensions.y / camera_dimensions.y)
 
 func compute_offset(ind: int) -> float:
-	return (-11.0 / 120.0) * background_dimensions[ind] + (3.0 / 160.0) * level_dimensions[ind] + 888
+	return (camera_dimensions[ind] - (scroll_scale[ind] * camera_dimensions[ind])) / 2.0
 
 # Update parallax visuals based on current params
 func set_values() -> void:

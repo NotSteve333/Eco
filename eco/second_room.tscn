@@ -31,17 +31,17 @@ speed = 1000.0
 
 [node name="CustomParallax" type="Parallax2D" parent="Background"]
 scroll_scale = Vector2(0, 0)
+scroll_offset = Vector2(137.122, 0)
 script = ExtResource("4_a2xko")
 background_dimensions = Vector2(3840, 1920)
 metadata/_custom_type_script = "uid://pn4tx8l64mqy"
 
 [node name="Sprite2D" type="Sprite2D" parent="Background/CustomParallax"]
-position = Vector2(704.053, 379.538)
 texture = ExtResource("4_lrd75")
 
 [node name="ParallaxLayer" type="Parallax2D" parent="Background"]
 scroll_scale = Vector2(0.143, 0.778)
-scroll_offset = Vector2(824, 0)
+scroll_offset = Vector2(137.122, 0)
 script = ExtResource("4_a2xko")
 background_dimensions = Vector2(3840, 1920)
 metadata/_custom_type_script = "uid://pn4tx8l64mqy"
@@ -51,7 +51,7 @@ texture = ExtResource("4_o06ut")
 
 [node name="ParallaxLayer2" type="Parallax2D" parent="Background"]
 scroll_scale = Vector2(0.429, 0.778)
-scroll_offset = Vector2(472, 0)
+scroll_offset = Vector2(411.08, 0)
 script = ExtResource("4_a2xko")
 background_dimensions = Vector2(7680, 1920)
 metadata/_custom_type_script = "uid://pn4tx8l64mqy"
