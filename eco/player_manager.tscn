@@ -8,3 +8,4 @@ script = ExtResource("1_ahlmt")
 metadata/_custom_type_script = "uid://0mebq1m7g12n"
 
 [node name="Player" parent="." instance=ExtResource("2_ahlmt")]
+unique_name_in_owner = true

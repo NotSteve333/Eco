@@ -2,6 +2,7 @@ extends CharacterBody2D
 class_name Player
 
 @onready var controls = $Controls
+@onready var camera = %Camera2D
 
 @export var speed = 300.0
 

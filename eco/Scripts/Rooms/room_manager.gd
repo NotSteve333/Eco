@@ -14,7 +14,7 @@ var load_room_queue_amt: int
 var max_update_duration: float = 15000.0
 
 # Short room change animation?
-signal spawn_in(spawn_point: Vector2)
+signal spawn_in(spawn_point: Vector2, lims: Vector4)
 # Room is ready for plant_manager to process
 signal send_room_to_plant_manager(r: RoomData)
 # Tell the load manager to free associated assets
@@ -56,7 +56,7 @@ func finished_plants(room_id: String) -> void:
 
 # Play enter room animation
 func enter_room(exit_id: String) -> void:
-	spawn_in.emit(active_room.get_data().get_exit_location(exit_id))
+	spawn_in.emit(active_room.get_data().get_exit_location(exit_id), active_room.get_lims())
 
 # Initiate update chain for each room
 func update_rooms() -> void:

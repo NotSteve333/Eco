@@ -67,6 +67,7 @@ animations = [{
 }]
 
 [node name="Player" type="CharacterBody2D"]
+z_index = 1
 script = ExtResource("1_i3pqv")
 metadata/_custom_type_script = "uid://cjmx3li62efbu"
 
@@ -82,6 +83,7 @@ metadata/_custom_type_script = "uid://c6qd7ltalisf4"
 shape = SubResource("CapsuleShape2D_i3pqv")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+unique_name_in_owner = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 rotation = 4.71239

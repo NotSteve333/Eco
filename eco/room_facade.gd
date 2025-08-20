@@ -16,6 +16,9 @@ func _ready() -> void:
 func get_room_dimensions() -> Vector2:
 	return Vector2(camera_bounds.z - camera_bounds.x, camera_bounds.w - camera_bounds.y)
 
+func get_lims() -> Vector4:
+	return camera_bounds
+
 func set_data(new_data: Data) -> void:
 	super(new_data)
 	camera_bounds = data.camera_bounds

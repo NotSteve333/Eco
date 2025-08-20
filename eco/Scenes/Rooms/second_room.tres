@@ -12,5 +12,8 @@ exits_dict = {
 exits_pos = {
 "exit1": Vector2(-7680, 0)
 }
+exits_right = {
+"exit1": true
+}
 facade_id = "second_room"
 metadata/_custom_type_script = "uid://closnh0s0jmm"

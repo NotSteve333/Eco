@@ -5,12 +5,15 @@
 
 [resource]
 script = ExtResource("1_jjen6")
-camera_bounds = Vector4(0, 0, 0, 0)
+camera_bounds = Vector4(-1920, -1080, 1920, 1080)
 exits_dict = {
 "exit1": ExtResource("1_dwnr7")
 }
 exits_pos = {
 "exit1": Vector2(1920, 0)
+}
+exits_right = {
+"exit1": false
 }
 facade_id = "first_room"
 metadata/_custom_type_script = "uid://closnh0s0jmm"
