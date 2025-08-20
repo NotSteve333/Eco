@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://dxmnbdmlhmqrb"]
+
+[ext_resource type="Texture2D" uid="uid://ca7phovgercpq" path="res://First-Scene-FLATTENED-FOR-EXPORT_0000_Layer-7.png" id="1_ksuqd"]
+
+[node name="ParallaxBackground" type="ParallaxBackground"]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxLayer"]
+texture = ExtResource("1_ksuqd")

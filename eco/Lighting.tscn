@@ -1,17 +1,29 @@
+<<<<<<< HEAD
 [gd_scene load_steps=5 format=3 uid="uid://7p2wdp665h34"]
+=======
+[gd_scene load_steps=6 format=3 uid="uid://7p2wdp665h34"]
+>>>>>>> 91716e451306da588c8fa8defe4d5c48a8fe9ce6
 
 [ext_resource type="Texture2D" uid="uid://rur48cfj2sld" path="res://Plant Compressed.png" id="1_nrb0m"]
 [ext_resource type="Texture2D" uid="uid://on6tcd30nom8" path="res://PointLightTexture.png" id="2_dk0ac"]
 [ext_resource type="Texture2D" uid="uid://ck2le230dvrwn" path="res://Plant Fill Normal for PS.png" id="4_8ww3s"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_nrb0m"]
+<<<<<<< HEAD
 diffuse_texture = ExtResource("1_nrb0m")
 normal_texture = ExtResource("4_8ww3s")
 
 [node name="Sprite2D" type="Sprite2D"]
 texture = SubResource("CanvasTexture_nrb0m")
+=======
+diffuse_texture = ExtResource("3_u7syq")
+normal_texture = ExtResource("4_8ww3s")
+
+[node name="Node2D" type="Node2D"]
+>>>>>>> 91716e451306da588c8fa8defe4d5c48a8fe9ce6
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
+<<<<<<< HEAD
 position = Vector2(-311, -40)
 scale = Vector2(4, 4)
 color = Color(1, 1, 0.780392, 1)
@@ -21,3 +33,18 @@ texture = ExtResource("2_dk0ac")
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color(0.589096, 0.589096, 0.589095, 1)
+=======
+visible = false
+position = Vector2(229, 17)
+scale = Vector2(9.76563, 5.86523)
+energy = 0.93
+shadow_color = Color(0, 0, 0.364706, 0)
+texture = ExtResource("2_dk0ac")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("CanvasTexture_nrb0m")
+
+[node name="linework" type="Sprite2D" parent="."]
+light_mask = 2
+texture = ExtResource("1_5tdmb")
+>>>>>>> 91716e451306da588c8fa8defe4d5c48a8fe9ce6
