@@ -1,26 +1,105 @@
-[gd_scene load_steps=4 format=3 uid="uid://b0mgb6ep6tu7s"]
+[gd_scene load_steps=9 format=3 uid="uid://bycs04w2ra0aq"]
 
-[ext_resource type="Script" uid="uid://closnh0s0jmm" path="res://Scripts/Rooms/room_data.gd" id="1_4tgcj"]
-[ext_resource type="PackedScene" uid="uid://c75hkin8bp6a2" path="res://room_exit.tscn" id="2_a04uu"]
+[ext_resource type="Script" uid="uid://c5or3l62fkv5v" path="res://room_facade.gd" id="1_4frrt"]
+[ext_resource type="PackedScene" uid="uid://c75hkin8bp6a2" path="res://room_exit_facade.tscn" id="2_a04uu"]
+[ext_resource type="Script" uid="uid://pn4tx8l64mqy" path="res://custom_parallax.gd" id="3_5wyt6"]
+[ext_resource type="Texture2D" uid="uid://bwme0m4d6g0ut" path="res://icon.svg" id="3_7qxq7"]
 [ext_resource type="Texture2D" uid="uid://gbh2aikuxjdv" path="res://Sprites/Backgrounds/First-Scene-FLATTENED-FOR-EXPORT_0001_GROUNDCOVER.png" id="3_kb36q"]
+[ext_resource type="Texture2D" uid="uid://cxrd6prmy3d03" path="res://Sprites/Backgrounds/First-Scene-FLATTENED-FOR-EXPORT_0003_Background.png" id="4_7qxq7"]
+[ext_resource type="Texture2D" uid="uid://dkob42ga4q4cx" path="res://Sprites/Backgrounds/First-Scene-FLATTENED-FOR-EXPORT_0002_KEEP.png" id="5_72bwh"]
+[ext_resource type="Texture2D" uid="uid://b43aijw5s3uuo" path="res://Sprites/Backgrounds/First-Scene-FLATTENED-FOR-EXPORT_0000_Layer-7.png" id="7_segjr"]
 
-[node name="FirstRoom" type="Node2D"]
-script = ExtResource("1_4tgcj")
-room_id = "first_room"
-metadata/_custom_type_script = "uid://closnh0s0jmm"
+[node name="SecondRoom" type="Node2D"]
+script = ExtResource("1_4frrt")
+metadata/_custom_type_script = "uid://c5or3l62fkv5v"
 
 [node name="Exits" type="Node" parent="."]
 
 [node name="RoomExit" parent="Exits" instance=ExtResource("2_a04uu")]
-position = Vector2(1951, 6)
-scale = Vector2(8.6316, 453.153)
+position = Vector2(-7663, -30)
+scale = Vector2(5.02024, 85.035)
 exit_id = "exit1"
+
+[node name="Sprite2D2" type="Sprite2D" parent="Exits/RoomExit"]
+z_index = 1
+texture = ExtResource("3_7qxq7")
 
 [node name="Plants" type="Node" parent="."]
 
 [node name="Background" type="Node2D" parent="."]
 
-[node name="Sprite2D" type="Sprite2D" parent="Background"]
+[node name="CustomParallax" type="Parallax2D" parent="Background"]
+scroll_scale = Vector2(0, 0)
+scroll_offset = Vector2(137.122, 0)
+script = ExtResource("3_5wyt6")
+background_dimensions = Vector2(3840, 1920)
+metadata/_custom_type_script = "uid://pn4tx8l64mqy"
+
+[node name="Sprite2D" type="Sprite2D" parent="Background/CustomParallax"]
+texture = ExtResource("4_7qxq7")
+
+[node name="ParallaxLayer" type="Parallax2D" parent="Background"]
+scroll_scale = Vector2(0.143, 0.778)
+scroll_offset = Vector2(137.122, 0)
+script = ExtResource("3_5wyt6")
+background_dimensions = Vector2(3840, 1920)
+metadata/_custom_type_script = "uid://pn4tx8l64mqy"
+
+[node name="Sprite2D" type="Sprite2D" parent="Background/ParallaxLayer"]
+texture = ExtResource("5_72bwh")
+
+[node name="ParallaxLayer2" type="Parallax2D" parent="Background"]
+scroll_scale = Vector2(0.429, 0.778)
+scroll_offset = Vector2(411.08, 0)
+script = ExtResource("3_5wyt6")
+background_dimensions = Vector2(7680, 1920)
+metadata/_custom_type_script = "uid://pn4tx8l64mqy"
+
+[node name="Sprite2D" type="Node2D" parent="Background/ParallaxLayer2"]
+
+[node name="Sprite2D2" type="Sprite2D" parent="Background/ParallaxLayer2/Sprite2D"]
+position = Vector2(1920, 0)
+scale = Vector2(-1, 1)
 texture = ExtResource("3_kb36q")
+
+[node name="Sprite2D" type="Sprite2D" parent="Background/ParallaxLayer2/Sprite2D"]
+position = Vector2(-1920, 0)
+texture = ExtResource("3_kb36q")
+
+[node name="Foreground" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Foreground"]
+position = Vector2(-5760, 850)
+scale = Vector2(-1, 1)
+texture = ExtResource("7_segjr")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Foreground"]
+position = Vector2(-1920, 850)
+texture = ExtResource("7_segjr")
+
+[node name="Sprite2D3" type="Sprite2D" parent="Foreground"]
+position = Vector2(5760, 850)
+texture = ExtResource("7_segjr")
+
+[node name="Sprite2D4" type="Sprite2D" parent="Foreground"]
+position = Vector2(1920, 850)
+scale = Vector2(-1, 1)
+texture = ExtResource("7_segjr")
+
+[node name="Foreground2" type="Node2D" parent="."]
+visible = false
+
+[node name="Sprite2D2" type="Sprite2D" parent="Foreground2"]
+position = Vector2(0, 850)
+texture = ExtResource("7_segjr")
+
+[node name="Sprite2D4" type="Sprite2D" parent="Foreground2"]
+position = Vector2(3840, 850)
+scale = Vector2(-1, 1)
+texture = ExtResource("7_segjr")
+
+[node name="Sprite2D3" type="Sprite2D" parent="Foreground2"]
+position = Vector2(-3840, 850)
+texture = ExtResource("7_segjr")
 
 [connection signal="player_exit" from="Exits/RoomExit" to="." method="player_exit"]

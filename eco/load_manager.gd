@@ -31,7 +31,7 @@ func _process(_delta: float) -> void:
 			0:
 				data_to_load = load_queue.pop_back()
 				load_queue_size -= 1
-				facade_path = SceneDictionary.RoomScenes[data_to_load.get_facade()]
+				facade_path = SceneDictionary.FacadesPaths[data_to_load.get_facade()]
 				load_stage = 1
 				continue
 			1:
@@ -53,15 +53,17 @@ func _process(_delta: float) -> void:
 # Immediately load a Facade, skipping the queue.
 # Note: Can cause stutters
 # Note: Does not touch the load_queue, but does add to loaded_scenes
-func quick_load(data: Data) -> Facade:
+func quick_load(q_data: Data) -> Facade:
 	
 	# Take over in the event that the queue was already processing the same Data
-	if load_stage > 0 and data_to_load == data:
+	if load_stage > 0 and data_to_load == q_data:
 		load_stage = 0
 
-	var q_facade_path = data.get_facade()
-	var q_facade_scene = load(q_facade_path).instantiate()
-	q_facade_scene.set_data(data_to_load)
+	var q_facade_id = q_data.get_facade_id()
+	var q_facade_path = SceneDictionary.FacadesPaths[q_facade_id]
+	var q_facade_packed_scene: PackedScene = load(q_facade_path)
+	var q_facade_scene = q_facade_packed_scene.instantiate()
+	q_facade_scene.set_data(q_data)
 	loaded_scenes[q_facade_scene.get_id()] = q_facade_scene
 	q_facade_scene.request_load.connect(add_data_to_queue)
 	q_facade_scene.finish_loading()

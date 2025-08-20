@@ -12,7 +12,7 @@ func _ready() -> void:
 # Sample from a normal distribution with a known value
 func normal_dist(x: float, mean: float, sig: float) -> float:
 	var diff = (x - mean)
-	return exp(-1.0 * mean * mean / (2.0 * sig * sig))
+	return exp(-1.0 * diff * diff / (2.0 * sig * sig))
 
 func range_to_nums(start: float, end: float, interval: float) -> int:
 	return int(abs(end - start) / interval)

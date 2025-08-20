@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="RoomData" load_steps=3 format=3 uid="uid://b8o574b5ttgin"]
+
+[ext_resource type="Resource" uid="uid://b6sy2nou38snq" path="res://Scenes/Rooms/exit1.tres" id="1_52it1"]
+[ext_resource type="Script" uid="uid://closnh0s0jmm" path="res://Scripts/Rooms/room_data.gd" id="1_fqr0o"]
+
+[resource]
+script = ExtResource("1_fqr0o")
+camera_bounds = Vector4(-7680, -1080, 7680, 1080)
+exits_dict = {
+"exit1": ExtResource("1_52it1")
+}
+exits_pos = {
+"exit1": Vector2(-7680, 0)
+}
+facade_id = "second_room"
+metadata/_custom_type_script = "uid://closnh0s0jmm"

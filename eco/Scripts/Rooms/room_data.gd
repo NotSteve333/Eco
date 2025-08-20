@@ -2,12 +2,11 @@ extends Data
 # Space which entities reside in, screens, levels
 class_name RoomData
 
-# Name of room for loading
-@export var room_id: String
 # Size/Shape of room
 @export var camera_bounds: Vector4
 # Exits to other rooms
 @export var exits_dict: Dictionary
+@export var exits_pos: Dictionary
 # Watershed region this room resides in
 @export var water_region: Region
 # Light region this room resides in
@@ -28,7 +27,7 @@ signal room_data_ready(id: String)
 
 func update() -> void:
 	conditions_dict = combine_conditions()
-	room_data_ready.emit(room_id)
+	room_data_ready.emit(facade_id)
 
 func get_region_conditions() -> Dictionary:
 	return conditions_dict
@@ -38,10 +37,10 @@ func get_local_conditions(pos: Vector2) -> Vector3:
 	
 # Compile all events into a dictionary of vec4s
 func combine_conditions() -> Dictionary:
-	var water_events = water_region.get_events_since(last_update, room_id)
-	var light_events = light_region.get_events_since(last_update, room_id)
-	var temp_events = temp_region.get_events_since(last_update, room_id)
-	var pol_events = pol_region.get_events_since(last_update, room_id)
+	var water_events = water_region.get_events_since(last_update, facade_id)
+	var light_events = light_region.get_events_since(last_update, facade_id)
+	var temp_events = temp_region.get_events_since(last_update, facade_id)
+	var pol_events = pol_region.get_events_since(last_update, facade_id)
 	var combine_events: Dictionary
 	var w = 0
 	var l = 0
@@ -85,13 +84,14 @@ func set_last_update(time: float) -> void:
 
 # Gets where the player should enter this room from based on the exit they used
 func get_exit_location(exit_id: String) -> Vector2:
-	return exits_dict[exit_id].get_spawn_point()
+	
+	return exits_pos[exit_id] + exits_dict[exit_id].get_spawn_point()
 
 # Get rooms adjacent to this one
 func get_neighbors() -> PackedStringArray:
 	var neighbors = []
 	for e in exits_dict:
-		var neighbor = e.get_other_end(room_id)
+		var neighbor = exits_dict[e].get_other_end(facade_id)
 		if !(neighbor in neighbors):
 			neighbors.append(neighbor)
 	return neighbors

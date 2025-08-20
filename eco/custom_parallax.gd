@@ -32,4 +32,3 @@ func set_values() -> void:
 	var offset_y = 0.0
 	var offset_x = compute_offset(0)
 	scroll_offset = Vector2(offset_x, offset_y)
-	print(parallax_id, " - Scroll: ", scroll_scale, ", Offset: ", scroll_offset)

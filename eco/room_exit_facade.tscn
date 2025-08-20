@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://c75hkin8bp6a2"]
 
-[ext_resource type="Script" uid="uid://dpk05eowpbvfd" path="res://Scripts/Rooms/room_exit.gd" id="1_tg3bb"]
+[ext_resource type="Script" uid="uid://dpk05eowpbvfd" path="res://Scripts/Rooms/room_exit_facade.gd" id="1_tg3bb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lvplm"]
 
@@ -14,3 +14,5 @@ metadata/_custom_type_script = "uid://dpk05eowpbvfd"
 shape = SubResource("RectangleShape2D_lvplm")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+
+[connection signal="body_entered" from="Area2D" to="." method="recieve_exit"]

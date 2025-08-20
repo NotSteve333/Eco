@@ -25,7 +25,7 @@ signal die(location: Vector2)
 
 # Simulates history of ticks based on the timeline conveyed in cons_dict
 func update_plant(cons_dict: Dictionary, spot_con: Vector3) -> Vector2i:
-	var spot_growth_chance = compute_growth_chance(spot_con)
+	spot_growth_chance = compute_growth_chance(spot_con)
 	var mean_total = 0.0
 	var sig_total = 0.0
 	for n in cons_dict:

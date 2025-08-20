@@ -3,7 +3,7 @@ extends Resource
 # Data is simulated upon, and informs the Facade how to display
 class_name Data
 
-var facade_id: String
+@export var facade_id: String
 var facade: Facade
 
 # Inheriting classes need to override

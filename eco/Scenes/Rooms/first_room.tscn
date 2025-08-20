@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://cpu2yr0fglapj"]
 
 [ext_resource type="Script" uid="uid://c5or3l62fkv5v" path="res://room_facade.gd" id="1_jovsq"]
-[ext_resource type="PackedScene" uid="uid://c75hkin8bp6a2" path="res://room_exit.tscn" id="2_a04uu"]
-[ext_resource type="Resource" uid="uid://bpjpb015n8dp" path="res://exit1_con.tres" id="3_jovsq"]
+[ext_resource type="PackedScene" uid="uid://c75hkin8bp6a2" path="res://room_exit_facade.tscn" id="2_a04uu"]
+[ext_resource type="Texture2D" uid="uid://bwme0m4d6g0ut" path="res://icon.svg" id="3_jovsq"]
 [ext_resource type="Texture2D" uid="uid://gbh2aikuxjdv" path="res://Sprites/Backgrounds/First-Scene-FLATTENED-FOR-EXPORT_0001_GROUNDCOVER.png" id="3_kb36q"]
 
 [node name="FirstRoom" type="Node2D"]
@@ -12,10 +12,12 @@ metadata/_custom_type_script = "uid://c5or3l62fkv5v"
 [node name="Exits" type="Node" parent="."]
 
 [node name="RoomExit" parent="Exits" instance=ExtResource("2_a04uu")]
-position = Vector2(1951, 6)
+position = Vector2(1920, 0)
 scale = Vector2(5, 100)
 exit_id = "exit1"
-connection = ExtResource("3_jovsq")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Exits/RoomExit"]
+texture = ExtResource("3_jovsq")
 
 [node name="Plants" type="Node" parent="."]
 
@@ -23,3 +25,5 @@ connection = ExtResource("3_jovsq")
 
 [node name="Sprite2D" type="Sprite2D" parent="Background"]
 texture = ExtResource("3_kb36q")
+
+[connection signal="player_exit" from="Exits/RoomExit" to="." method="player_exit"]
