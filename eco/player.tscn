@@ -16,6 +16,8 @@
 [ext_resource type="Texture2D" uid="uid://c47cj72b4cpee" path="res://Sprites/Animals/Cheetah/Untitled_Artwork-11.png" id="14_dx0e4"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_i3pqv"]
+radius = 54.6932
+height = 164.258
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_jm5j8"]
 animations = [{
@@ -80,13 +82,17 @@ script = ExtResource("2_onrkg")
 metadata/_custom_type_script = "uid://c6qd7ltalisf4"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.59698
 shape = SubResource("CapsuleShape2D_i3pqv")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 unique_name_in_owner = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(1, -2)
 rotation = 4.71239
-scale = Vector2(0.0901926, 0.0901926)
+scale = Vector2(0.157714, 0.170866)
 sprite_frames = SubResource("SpriteFrames_jm5j8")
-animation = &"walk"
+animation = &"idle"
+autoplay = "idle"
+frame_progress = 0.00930179

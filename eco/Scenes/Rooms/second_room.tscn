@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bycs04w2ra0aq"]
+[gd_scene load_steps=11 format=3 uid="uid://bycs04w2ra0aq"]
 
 [ext_resource type="Script" uid="uid://c5or3l62fkv5v" path="res://room_facade.gd" id="1_4frrt"]
 [ext_resource type="PackedScene" uid="uid://c75hkin8bp6a2" path="res://room_exit_facade.tscn" id="2_a04uu"]
@@ -8,6 +8,12 @@
 [ext_resource type="Texture2D" uid="uid://cxrd6prmy3d03" path="res://Sprites/Backgrounds/First-Scene-FLATTENED-FOR-EXPORT_0003_Background.png" id="4_7qxq7"]
 [ext_resource type="Texture2D" uid="uid://dkob42ga4q4cx" path="res://Sprites/Backgrounds/First-Scene-FLATTENED-FOR-EXPORT_0002_KEEP.png" id="5_72bwh"]
 [ext_resource type="Texture2D" uid="uid://b43aijw5s3uuo" path="res://Sprites/Backgrounds/First-Scene-FLATTENED-FOR-EXPORT_0000_Layer-7.png" id="7_segjr"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5wyt6"]
+size = Vector2(15060, 222)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7qxq7"]
+size = Vector2(750.7, 232.58)
 
 [node name="SecondRoom" type="Node2D"]
 script = ExtResource("1_4frrt")
@@ -101,5 +107,20 @@ texture = ExtResource("7_segjr")
 [node name="Sprite2D3" type="Sprite2D" parent="Foreground2"]
 position = Vector2(-3840, 850)
 texture = ExtResource("7_segjr")
+
+[node name="Terrain" type="Node" parent="."]
+
+[node name="Floor" type="StaticBody2D" parent="Terrain"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Terrain/Floor"]
+position = Vector2(672, 1006)
+shape = SubResource("RectangleShape2D_5wyt6")
+
+[node name="Floor2" type="StaticBody2D" parent="Terrain"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Terrain/Floor2"]
+position = Vector2(-7163, 1111)
+rotation = -0.336849
+shape = SubResource("RectangleShape2D_7qxq7")
 
 [connection signal="player_exit" from="Exits/RoomExit" to="." method="player_exit"]
