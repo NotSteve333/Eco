@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://cdg3d7blyan6o"]
+
+[ext_resource type="Texture2D" uid="uid://bwme0m4d6g0ut" path="res://icon.svg" id="1_cwn06"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kleso"]
+radius = 27.0
+height = 122.0
+
+[node name="Player" type="CharacterBody2D"]
+collision_layer = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-2, -20)
+scale = Vector2(0.484375, 0.992188)
+texture = ExtResource("1_cwn06")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-2, -19)
+shape = SubResource("CapsuleShape2D_kleso")

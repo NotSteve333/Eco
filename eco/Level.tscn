@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://bbrawt0cs12os"]
+
+[ext_resource type="Texture2D" uid="uid://25gpyoysrbmb" path="res://Foreground.png" id="1_bexhn"]
+
+[node name="Level" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_bexhn")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+limit_left = -1920
+limit_top = -1080
+limit_right = 1920
+limit_bottom = 1080
