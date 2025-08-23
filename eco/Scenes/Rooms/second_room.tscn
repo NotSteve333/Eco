@@ -1,8 +1,8 @@
 [gd_scene load_steps=11 format=3 uid="uid://bycs04w2ra0aq"]
 
-[ext_resource type="Script" uid="uid://c5or3l62fkv5v" path="res://room_facade.gd" id="1_4frrt"]
-[ext_resource type="PackedScene" uid="uid://c75hkin8bp6a2" path="res://room_exit_facade.tscn" id="2_a04uu"]
-[ext_resource type="Script" uid="uid://pn4tx8l64mqy" path="res://custom_parallax.gd" id="3_5wyt6"]
+[ext_resource type="Script" uid="uid://c5or3l62fkv5v" path="res://Scripts/Rooms/room_facade.gd" id="1_4frrt"]
+[ext_resource type="PackedScene" uid="uid://c75hkin8bp6a2" path="res://Scenes/Rooms/Exits/room_exit_facade.tscn" id="2_a04uu"]
+[ext_resource type="Script" uid="uid://pn4tx8l64mqy" path="res://Scripts/Rooms/custom_parallax.gd" id="3_5wyt6"]
 [ext_resource type="Texture2D" uid="uid://bwme0m4d6g0ut" path="res://icon.svg" id="3_7qxq7"]
 [ext_resource type="Texture2D" uid="uid://gbh2aikuxjdv" path="res://Sprites/Backgrounds/First-Scene-FLATTENED-FOR-EXPORT_0001_GROUNDCOVER.png" id="3_kb36q"]
 [ext_resource type="Texture2D" uid="uid://cxrd6prmy3d03" path="res://Sprites/Backgrounds/First-Scene-FLATTENED-FOR-EXPORT_0003_Background.png" id="4_7qxq7"]

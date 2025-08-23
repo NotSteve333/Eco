@@ -84,6 +84,7 @@ func update_loaded_rooms(new_rooms: Array[String], just_left: RoomFacade) -> voi
 			
 		# Remove rooms which have left scope
 		else:
+			print(r_id)
 			done_with_room.emit(r_id)
 		loaded_rooms.erase(r_id)
 	

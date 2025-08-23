@@ -17,10 +17,10 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-GlobalTime="*res://global_time.gd"
-MathUtil="*res://math_util.gd"
-PlantUtils="*res://Scripts/Plants/plant_utils.gd"
-SceneDictionary="*res://scene_dictionary.gd"
+GlobalTime="*res://Scripts/Util/global_time.gd"
+MathUtil="*res://Scripts/Util/math_util.gd"
+PlantUtils="*res://Scripts/Util/plant_utils.gd"
+SceneDictionary="*res://Scripts/Util/scene_dictionary.gd"
 
 [display]
 

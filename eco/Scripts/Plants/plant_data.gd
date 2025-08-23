@@ -6,16 +6,16 @@ class_name PlantData
 @export var species_data: PlantSpeciesData
 
 # Identifies plant instance
-var plant_id: int
+@export var plant_id: int
 # Where the plant is with respect to it's room
-var room_id: String
-var position_in_room: Vector2
+@export var room_id: String
+@export var position_in_room: Vector2
 # Environmental conditions, as they pertain to this species
 var growth_conditions: Vector4
 # Average of all environmental conditions
 var spot_growth_chance: float
 # Current level of growth
-var growth_stage: int
+@export var growth_stage: int
 # Grown enough to potentially produce
 var mature: bool
 

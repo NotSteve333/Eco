@@ -18,7 +18,7 @@ class_name RoomData
 @export var pol_region: Region
 
 # plants in this room
-var plants: Array[PlantData]
+@export var plants: Array[PlantData]
 # Last time this room was updated
 var last_update: float
 # Historic events since last_update
