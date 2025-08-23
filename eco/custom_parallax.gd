@@ -4,7 +4,10 @@ class_name CustomParallax
 
 @export var background_dimensions: Vector2
 @export var parallax_id: int
+<<<<<<< HEAD
 @export var far: bool
+=======
+>>>>>>> origin/dev
 
 var camera_dimensions: Vector2
 var foreground_span_ratios: Vector2
@@ -26,6 +29,7 @@ func update_params() -> void:
 func compute_offset(ind: int) -> float:
 	return (camera_dimensions[ind] - (scroll_scale[ind] * camera_dimensions[ind])) / 2.0
 
+<<<<<<< HEAD
 
 # Update parallax visuals based on current params
 func set_values() -> void:
@@ -36,3 +40,12 @@ func set_values() -> void:
 	var offset_x = compute_offset(0)
 	scroll_offset = Vector2(offset_x, offset_y)
 	print(parallax_id, " - Scroll: ", scroll_scale, ", Offset: ", scroll_offset)
+=======
+# Update parallax visuals based on current params
+func set_values() -> void:
+	scroll_scale = Vector2((background_span_ratios.x - 1) / (foreground_span_ratios.x - 1), (background_span_ratios.y - 1) / (foreground_span_ratios.y - 1))
+	scroll_scale.y = 1.0
+	var offset_y = 0.0
+	var offset_x = compute_offset(0)
+	scroll_offset = Vector2(offset_x, offset_y)
+>>>>>>> origin/dev

@@ -1,12 +1,75 @@
-[gd_scene load_steps=5 format=3 uid="uid://c4lmh3ghjvhpn"]
+[gd_scene load_steps=17 format=3 uid="uid://c4lmh3ghjvhpn"]
 
 [ext_resource type="Script" uid="uid://2r7laygusfkr" path="res://controls_buffer.gd" id="1_4flbx"]
 [ext_resource type="Script" uid="uid://cjmx3li62efbu" path="res://player.gd" id="1_i3pqv"]
 [ext_resource type="Script" uid="uid://c6qd7ltalisf4" path="res://entity_health.gd" id="2_onrkg"]
+[ext_resource type="Texture2D" uid="uid://dfvsvq023ej8w" path="res://Sprites/Animals/Cheetah/Untitled_Artwork-6.png" id="4_bwjto"]
+[ext_resource type="Texture2D" uid="uid://dl8s2ykw74xuf" path="res://Sprites/Animals/Cheetah/Untitled_Artwork-1.png" id="5_606se"]
+[ext_resource type="Texture2D" uid="uid://brdjhwn5qko0r" path="res://Sprites/Animals/Cheetah/Untitled_Artwork-2.png" id="6_u1c27"]
+[ext_resource type="Texture2D" uid="uid://cen0ki80msaqe" path="res://Sprites/Animals/Cheetah/Untitled_Artwork-3.png" id="7_op7ga"]
+[ext_resource type="Texture2D" uid="uid://c6j5evatp6ukv" path="res://Sprites/Animals/Cheetah/Untitled_Artwork-4.png" id="8_q13i1"]
+[ext_resource type="Texture2D" uid="uid://c46tilob55u5a" path="res://Sprites/Animals/Cheetah/Untitled_Artwork-5.png" id="9_pylmc"]
+[ext_resource type="Texture2D" uid="uid://j5kihi7rdpc3" path="res://Sprites/Animals/Cheetah/Untitled_Artwork-7.png" id="10_pbfsw"]
+[ext_resource type="Texture2D" uid="uid://ckkb18atpjkj8" path="res://Sprites/Animals/Cheetah/Untitled_Artwork-8.png" id="11_5tmop"]
+[ext_resource type="Texture2D" uid="uid://b1bmle6hk3vd2" path="res://Sprites/Animals/Cheetah/Untitled_Artwork-9.png" id="12_7ahtn"]
+[ext_resource type="Texture2D" uid="uid://cxh88kkwrl4jt" path="res://Sprites/Animals/Cheetah/Untitled_Artwork-10.png" id="13_7lmhl"]
+[ext_resource type="Texture2D" uid="uid://c47cj72b4cpee" path="res://Sprites/Animals/Cheetah/Untitled_Artwork-11.png" id="14_dx0e4"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_i3pqv"]
+radius = 54.6932
+height = 164.258
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jm5j8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_bwjto")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_606se")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_u1c27")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_op7ga")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_q13i1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_pylmc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_bwjto")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_pbfsw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_5tmop")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_7ahtn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_7lmhl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_dx0e4")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 8.0
+}]
 
 [node name="Player" type="CharacterBody2D"]
+z_index = 1
 script = ExtResource("1_i3pqv")
 metadata/_custom_type_script = "uid://cjmx3li62efbu"
 
@@ -19,6 +82,17 @@ script = ExtResource("2_onrkg")
 metadata/_custom_type_script = "uid://c6qd7ltalisf4"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.59698
 shape = SubResource("CapsuleShape2D_i3pqv")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+unique_name_in_owner = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(1, -2)
+rotation = 4.71239
+scale = Vector2(0.157714, 0.170866)
+sprite_frames = SubResource("SpriteFrames_jm5j8")
+animation = &"idle"
+autoplay = "idle"
+frame_progress = 0.00930179

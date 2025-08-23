@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://dd004td2uhogr"]
+
+[ext_resource type="Script" uid="uid://cap1n6wcslwno" path="res://player_manager.gd" id="1_ahlmt"]
+[ext_resource type="PackedScene" uid="uid://c4lmh3ghjvhpn" path="res://player.tscn" id="2_ahlmt"]
+
+[node name="PlayerManager" type="Node"]
+script = ExtResource("1_ahlmt")
+metadata/_custom_type_script = "uid://cap1n6wcslwno"
+
+[node name="Player" parent="." instance=ExtResource("2_ahlmt")]
+unique_name_in_owner = true

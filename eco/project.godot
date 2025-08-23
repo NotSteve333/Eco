@@ -11,7 +11,11 @@ config_version=5
 [application]
 
 config/name="Eco"
+<<<<<<< HEAD
 run/main_scene="uid://fjsh0owu8j75"
+=======
+run/main_scene="uid://dvmyre6ckkk1p"
+>>>>>>> origin/dev
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -24,9 +28,15 @@ SceneDictionary="*res://scene_dictionary.gd"
 
 [display]
 
+<<<<<<< HEAD
 window/size/viewport_width=1920
 window/size/viewport_height=1080
 window/size/mode=3
+=======
+window/size/viewport_width=1156
+window/size/viewport_height=720
+window/size/initial_position_type=0
+>>>>>>> origin/dev
 
 [editor_plugins]
 
