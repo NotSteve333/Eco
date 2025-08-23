@@ -28,6 +28,7 @@ exit_id = "exit1"
 
 [node name="Sprite2D2" type="Sprite2D" parent="Exits/RoomExit"]
 z_index = 1
+position = Vector2(-52.3879, 0)
 texture = ExtResource("3_7qxq7")
 
 [node name="Plants" type="Node" parent="."]
