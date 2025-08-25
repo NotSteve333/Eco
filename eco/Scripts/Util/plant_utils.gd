@@ -7,6 +7,7 @@ enum SurfaceType {
 	WATER
 }
 
+
 enum EventType {
 	WATER,
 	LIGHT,

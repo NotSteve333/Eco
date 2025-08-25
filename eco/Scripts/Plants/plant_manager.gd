@@ -2,7 +2,9 @@ extends Manager
 # Manages plants
 class_name PlantManager
 
-const tick_interval: float = .2
+# Seconds between each plant tick
+const tick_interval: float = 60
+# Time budget when updating plants
 const max_update_duration: float = 15000.0
 
 # Plants to be updated stored here, packed together based on the room they're in

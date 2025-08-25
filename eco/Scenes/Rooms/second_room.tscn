@@ -13,7 +13,7 @@
 size = Vector2(15060, 222)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7qxq7"]
-size = Vector2(750.7, 232.58)
+size = Vector2(1033.02, 232.58)
 
 [node name="SecondRoom" type="Node2D"]
 script = ExtResource("1_4frrt")
@@ -120,7 +120,7 @@ shape = SubResource("RectangleShape2D_5wyt6")
 [node name="Floor2" type="StaticBody2D" parent="Terrain"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Terrain/Floor2"]
-position = Vector2(-7163, 1111)
+position = Vector2(-7296.23, 1157.66)
 rotation = -0.336849
 shape = SubResource("RectangleShape2D_7qxq7")
 

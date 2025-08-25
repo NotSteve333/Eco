@@ -40,6 +40,7 @@ func get_species() -> String:
 
 # Grow the appropriate number of stages
 func grow(stages: int) -> Vector2i:
+	print(stages)
 	var low_end = clamp(growth_stage, species_data.mature_range.x, species_data.mature_range.y)
 	var pre_spread_ticks = max(0, low_end - growth_stage)
 	growth_stage = max(growth_stage + stages, species_data.total_stages)

@@ -19,6 +19,7 @@ class_name RoomData
 
 # plants in this room
 @export var plants: Array[PlantData]
+@export var surfaces: Array[Surface]
 # Last time this room was updated
 var last_update: float
 # Historic events since last_update
@@ -34,6 +35,9 @@ func get_region_conditions() -> Dictionary:
 	return conditions_dict
 
 func get_local_conditions(pos: Vector2) -> Vector3:
+	for s in surfaces:
+		if s.contains_point(pos):
+			return s.get_all_conditions()
 	return Vector3.ZERO
 	
 # Compile all events into a dictionary of vec4s

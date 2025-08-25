@@ -37,7 +37,6 @@ func write_to_data() -> void:
 
 # Player is leaving, get info for switch
 func player_exit(exit_id: String) -> void:
-	print(exit_id)
 	if has_exited:
 		return
 	has_exited = true

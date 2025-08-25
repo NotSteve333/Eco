@@ -41,7 +41,7 @@ func _process(_delta: float) -> void:
 func change_room(room_id: String, exit_id: String) -> void:
 	remove_child(active_room)
 	var r = loaded_rooms[room_id]
-	update_loaded_rooms(r.get_neighbors(), active_room)
+	update_loaded_rooms(r.get_neighbors(), active_room, room_id)
 	active_room = %LoadManager.need_facade(r, room_id)
 	active_room.change_room.connect(change_room)
 	update_rooms()
@@ -69,9 +69,8 @@ func send_plants_to_manager(room_id: String) -> void:
 
 # Move rooms, instantiate, and free rooms based on change in scope
 # Note: Consider ordering result based on proximity to entrance
-func update_loaded_rooms(new_rooms: Array[String], just_left: RoomFacade) -> void:
+func update_loaded_rooms(new_rooms: Array[String], just_left: RoomFacade, entering: String) -> void:
 	var new_loaded_rooms: Dictionary
-	
 	# Check old scope
 	for r_id in loaded_rooms:
 		
@@ -83,8 +82,7 @@ func update_loaded_rooms(new_rooms: Array[String], just_left: RoomFacade) -> voi
 			new_rooms.erase(r_id)
 			
 		# Remove rooms which have left scope
-		else:
-			print(r_id)
+		elif r_id != entering:
 			done_with_room.emit(r_id)
 		loaded_rooms.erase(r_id)
 	
