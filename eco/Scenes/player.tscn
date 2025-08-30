@@ -1,8 +1,8 @@
 [gd_scene load_steps=22 format=3 uid="uid://c4lmh3ghjvhpn"]
 
-[ext_resource type="Script" uid="uid://2r7laygusfkr" path="res://controls_buffer.gd" id="1_4flbx"]
-[ext_resource type="Script" uid="uid://cjmx3li62efbu" path="res://player.gd" id="1_i3pqv"]
-[ext_resource type="Script" uid="uid://c6qd7ltalisf4" path="res://entity_health.gd" id="2_onrkg"]
+[ext_resource type="Script" uid="uid://2r7laygusfkr" path="res://Scripts/Player/controls_buffer.gd" id="1_4flbx"]
+[ext_resource type="Script" uid="uid://cjmx3li62efbu" path="res://Scripts/Player/player.gd" id="1_i3pqv"]
+[ext_resource type="Script" uid="uid://c6qd7ltalisf4" path="res://Scripts/BaseClasses/entity_health.gd" id="2_onrkg"]
 [ext_resource type="Texture2D" uid="uid://dfvsvq023ej8w" path="res://Sprites/Animals/Cheetah/Untitled_Artwork-6.png" id="4_bwjto"]
 [ext_resource type="Texture2D" uid="uid://dl8s2ykw74xuf" path="res://Sprites/Animals/Cheetah/Untitled_Artwork-1.png" id="5_606se"]
 [ext_resource type="Texture2D" uid="uid://brdjhwn5qko0r" path="res://Sprites/Animals/Cheetah/Untitled_Artwork-2.png" id="6_u1c27"]
@@ -16,8 +16,8 @@
 [ext_resource type="Texture2D" uid="uid://c47cj72b4cpee" path="res://Sprites/Animals/Cheetah/Untitled_Artwork-11.png" id="14_dx0e4"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_i3pqv"]
-radius = 54.6932
-height = 164.258
+radius = 79.0253
+height = 158.051
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_jm5j8"]
 animations = [{
@@ -159,9 +159,10 @@ shape = SubResource("CapsuleShape2D_i3pqv")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 unique_name_in_owner = true
+zoom = Vector2(0.5, 0.5)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(1, -2)
+position = Vector2(2, -116)
 rotation = 4.71239
 scale = Vector2(0.157714, 0.170866)
 sprite_frames = SubResource("SpriteFrames_jm5j8")

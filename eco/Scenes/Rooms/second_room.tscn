@@ -1,13 +1,39 @@
-[gd_scene load_steps=11 format=3 uid="uid://bycs04w2ra0aq"]
+[gd_scene load_steps=18 format=3 uid="uid://bycs04w2ra0aq"]
 
 [ext_resource type="Script" uid="uid://c5or3l62fkv5v" path="res://Scripts/Rooms/room_facade.gd" id="1_4frrt"]
 [ext_resource type="PackedScene" uid="uid://c75hkin8bp6a2" path="res://Scenes/Rooms/Exits/room_exit_facade.tscn" id="2_a04uu"]
+[ext_resource type="Script" uid="uid://b84u2u2wq2fvw" path="res://Scripts/Plants/plant_data.gd" id="2_pnfen"]
 [ext_resource type="Script" uid="uid://pn4tx8l64mqy" path="res://Scripts/Rooms/custom_parallax.gd" id="3_5wyt6"]
 [ext_resource type="Texture2D" uid="uid://bwme0m4d6g0ut" path="res://icon.svg" id="3_7qxq7"]
 [ext_resource type="Texture2D" uid="uid://gbh2aikuxjdv" path="res://Sprites/Backgrounds/First-Scene-FLATTENED-FOR-EXPORT_0001_GROUNDCOVER.png" id="3_kb36q"]
+[ext_resource type="Script" uid="uid://closnh0s0jmm" path="res://Scripts/Rooms/room_data.gd" id="3_ocg2f"]
 [ext_resource type="Texture2D" uid="uid://cxrd6prmy3d03" path="res://Sprites/Backgrounds/First-Scene-FLATTENED-FOR-EXPORT_0003_Background.png" id="4_7qxq7"]
+[ext_resource type="PackedScene" uid="uid://cwo6exyekd4db" path="res://Scenes/Plants/split_bulb.tscn" id="4_72bwh"]
+[ext_resource type="Script" uid="uid://q51kpwsicyl0" path="res://Scripts/BaseClasses/surface.gd" id="4_hsctp"]
 [ext_resource type="Texture2D" uid="uid://dkob42ga4q4cx" path="res://Sprites/Backgrounds/First-Scene-FLATTENED-FOR-EXPORT_0002_KEEP.png" id="5_72bwh"]
 [ext_resource type="Texture2D" uid="uid://b43aijw5s3uuo" path="res://Sprites/Backgrounds/First-Scene-FLATTENED-FOR-EXPORT_0000_Layer-7.png" id="7_segjr"]
+[ext_resource type="Resource" uid="uid://mfjcpgescd7q" path="res://Saves/PlantSpeciesData/split_bulb.tres" id="8_ocg2f"]
+
+[sub_resource type="Resource" id="Resource_pnfen"]
+script = ExtResource("3_ocg2f")
+camera_bounds = Vector4(0, 0, 0, 0)
+exits_dict = {}
+exits_pos = {}
+exits_right = {}
+plants = Array[ExtResource("2_pnfen")]([])
+surfaces = Array[ExtResource("4_hsctp")]([])
+last_update = 0.0
+facade_id = "second_room"
+data_id = "second_room"
+
+[sub_resource type="Resource" id="Resource_ocg2f"]
+script = ExtResource("2_pnfen")
+species_data = ExtResource("8_ocg2f")
+room_id = "second_room"
+position_in_room = Vector2(-611, 404)
+growth_stage = 0
+facade_id = "split_bulb"
+data_id = "plant1"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5wyt6"]
 size = Vector2(15060, 222)
@@ -17,6 +43,9 @@ size = Vector2(1033.02, 232.58)
 
 [node name="SecondRoom" type="Node2D"]
 script = ExtResource("1_4frrt")
+facade_id = "second_room"
+data_id = "second_room"
+data = SubResource("Resource_pnfen")
 metadata/_custom_type_script = "uid://c5or3l62fkv5v"
 
 [node name="Exits" type="Node" parent="."]
@@ -32,6 +61,14 @@ position = Vector2(-52.3879, 0)
 texture = ExtResource("3_7qxq7")
 
 [node name="Plants" type="Node" parent="."]
+
+[node name="SplitBulb" parent="Plants" instance=ExtResource("4_72bwh")]
+position = Vector2(-611, 404)
+room_id = "second_room"
+position_in_room = Vector2(-611, 404)
+facade_id = "split_bulb"
+data_id = "plant1"
+data = SubResource("Resource_ocg2f")
 
 [node name="Background" type="Node2D" parent="."]
 

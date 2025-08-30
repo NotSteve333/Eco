@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://brfgmbiwvic0d"]
+
+[ext_resource type="Script" uid="uid://c5or3l62fkv5v" path="res://Scripts/Rooms/room_facade.gd" id="1_srpdh"]
+
+[node name="TestRoom" type="Node2D"]
+script = ExtResource("1_srpdh")
+facade_id = "test_room"
+data_id = "test_data"
+metadata/_custom_type_script = "uid://c5or3l62fkv5v"
+
+[node name="Plants" type="Node" parent="."]
+
+[node name="Exits" type="Node" parent="."]
+
+[node name="Terrain" type="Node" parent="."]

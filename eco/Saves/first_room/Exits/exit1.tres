@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="RoomExitData" load_steps=4 format=3 uid="uid://b6sy2nou38snq"]
+
+[ext_resource type="Script" uid="uid://pqopnggvfyf0" path="res://Scripts/Rooms/RoomExit/exit_connection.gd" id="1_33esp"]
+[ext_resource type="Script" uid="uid://c1nq3x3labtw7" path="res://Scripts/Rooms/RoomExit/room_exit_data.gd" id="1_d5otx"]
+
+[sub_resource type="Resource" id="Resource_vpkh3"]
+script = ExtResource("1_33esp")
+room_id_1 = "first_room"
+room_id_2 = "second_room"
+metadata/_custom_type_script = "uid://pqopnggvfyf0"
+
+[resource]
+script = ExtResource("1_d5otx")
+connection = SubResource("Resource_vpkh3")
+spawn_point = Vector2(200, 0)
+facade_id = ""
+data_id = ""
+metadata/_custom_type_script = "uid://c1nq3x3labtw7"

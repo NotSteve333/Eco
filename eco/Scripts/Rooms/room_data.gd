@@ -21,7 +21,7 @@ class_name RoomData
 @export var plants: Array[PlantData]
 @export var surfaces: Array[Surface]
 # Last time this room was updated
-var last_update: float
+@export var last_update: float
 # Historic events since last_update
 var conditions_dict: Dictionary
 

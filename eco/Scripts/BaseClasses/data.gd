@@ -4,6 +4,7 @@ extends Resource
 class_name Data
 
 @export var facade_id: String
+@export var data_id: String
 var facade: Facade
 
 # Inheriting classes need to override

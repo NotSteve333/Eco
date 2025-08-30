@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="PlantSpeciesData" load_steps=2 format=3 uid="uid://mfjcpgescd7q"]
+
+[ext_resource type="Script" uid="uid://br575ksq41l83" path="res://Scripts/Plants/plant_species_data.gd" id="1_0xjyj"]
+
+[resource]
+script = ExtResource("1_0xjyj")
+plant_species_name = ""
+growth_factors = PackedVector2Array()
+self_polinated = true
+rigidity = 0.0
+base_growth_chance = 0.0
+base_spread_chance = 0.0
+spread_radius = 0.0
+surface_type = 0
+total_stages = 0
+mature_range = Vector2i(0, 0)
+spritesheet = ""
+metadata/_custom_type_script = "uid://br575ksq41l83"

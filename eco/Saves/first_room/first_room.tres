@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="RoomData" load_steps=4 format=3 uid="uid://ywy3xn85g2m3"]
+
+[ext_resource type="Script" uid="uid://b84u2u2wq2fvw" path="res://Scripts/Plants/plant_data.gd" id="1_wesde"]
+[ext_resource type="Script" uid="uid://closnh0s0jmm" path="res://Scripts/Rooms/room_data.gd" id="2_xhk5d"]
+[ext_resource type="Script" uid="uid://q51kpwsicyl0" path="res://Scripts/BaseClasses/surface.gd" id="3_6nq0y"]
+
+[resource]
+script = ExtResource("2_xhk5d")
+camera_bounds = Vector4(0, 0, 0, 0)
+exits_dict = {}
+exits_pos = {}
+exits_right = {}
+plants = Array[ExtResource("1_wesde")]([])
+surfaces = Array[ExtResource("3_6nq0y")]([])
+last_update = 0.0
+facade_id = ""
+data_id = ""

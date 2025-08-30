@@ -2,9 +2,27 @@ extends Facade
 # Visual counterpart to RoomData
 class_name RoomFacade
 
-var camera_bounds: Vector4
-var exits_dict: Dictionary
-var room_id: String
+@export var camera_bounds: Vector4
+# Exits to other rooms
+@export var exits_dict: Dictionary
+@export var exits_pos: Dictionary
+@export var exits_right: Dictionary
+# Watershed region this room resides in
+@export var water_region: Region
+# Light region this room resides in
+@export var light_region: Region
+# Temperaure region this room resides in
+@export var temp_region: Region
+# Polinator region this room resides in
+@export var pol_region: Region
+
+# plants in this room
+@export var plants: Array[PlantData]
+@export var surfaces: Array[Surface]
+# Last time this room was updated
+@export var last_update: float
+# Historic events since last_update
+var conditions_dict: Dictionary
 var has_exited: bool
 
 # Player is switching to target via exit_id
@@ -22,7 +40,7 @@ func get_lims() -> Vector4:
 func set_data(new_data: Data) -> void:
 	super(new_data)
 	camera_bounds = data.camera_bounds
-	room_id = data.facade_id
+	facade_id = data.facade_id
 
 func finish_loading() -> void:
 	super()
@@ -30,7 +48,6 @@ func finish_loading() -> void:
 
 func add_plant_child(plant: PlantFacade) -> void:
 	$Plants.add_child(plant)
-	
 
 func write_to_data() -> void:
 	pass
@@ -41,5 +58,5 @@ func player_exit(exit_id: String) -> void:
 		return
 	has_exited = true
 	var active_exit = data.exits_dict[exit_id]
-	var target = active_exit.get_other_end(room_id)
+	var target = active_exit.get_other_end(data_id)
 	change_room.emit(target, exit_id)

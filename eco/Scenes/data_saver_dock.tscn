@@ -1,0 +1,41 @@
+[gd_scene load_steps=2 format=3 uid="uid://d24ewrgsh7num"]
+
+[ext_resource type="Script" uid="uid://co1o7670n2yc1" path="res://Scripts/Util/data_saver_dock.gd" id="1_vu6rt"]
+
+[node name="DataSaverDock" type="VBoxContainer"]
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_vu6rt")
+metadata/_custom_type_script = "uid://co1o7670n2yc1"
+
+[node name="SaveThisScene" type="Button" parent="."]
+layout_mode = 2
+text = "Save this Scene"
+
+[node name="LoadThisScene" type="Button" parent="."]
+layout_mode = 2
+text = "Load this Scene"
+
+[node name="SaveToFile" type="Button" parent="."]
+layout_mode = 2
+text = "Save to file"
+
+[node name="LoadFromFile" type="Button" parent="."]
+layout_mode = 2
+text = "Load from file"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+layout_mode = 2
+text = "Click \"Save this Scene\" to create corresponding Data Resources for each Facade in the Scene.
+
+Click \"Load this Scene\" to create corresponding Facade Nodes for each Data in the Scene.
+
+Click \"Save to file\" to write all live data to disk (Use before closing the project to be safe, but should happen automatically anyways).
+
+Click \"Load form file\" to load all live data from disk (Also should be happening automatically, but might fix bugs if you notice any)."
+fit_content = true
+
+[connection signal="pressed" from="SaveThisScene" to="." method="save_button_pressed"]
+[connection signal="pressed" from="LoadThisScene" to="." method="load_button_pressed"]
+[connection signal="pressed" from="SaveToFile" to="." method="save_to_file"]
+[connection signal="pressed" from="LoadFromFile" to="." method="load_from_file"]

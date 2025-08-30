@@ -5,8 +5,6 @@ class_name PlantData
 # Data storing specific data about the species this plant belongs to
 @export var species_data: PlantSpeciesData
 
-# Identifies plant instance
-@export var plant_id: int
 # Where the plant is with respect to it's room
 @export var room_id: String
 @export var position_in_room: Vector2

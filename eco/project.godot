@@ -20,17 +20,17 @@ config/icon="res://icon.svg"
 GlobalTime="*res://Scripts/Util/global_time.gd"
 MathUtil="*res://Scripts/Util/math_util.gd"
 PlantUtils="*res://Scripts/Util/plant_utils.gd"
-SceneDictionary="*res://Scripts/Util/scene_dictionary.gd"
+SaveManager="*res://Scripts/Util/save_manager.gd"
 
 [display]
 
-window/size/viewport_width=1920
-window/size/viewport_height=1080
+window/size/viewport_width=3840
+window/size/viewport_height=2160
 window/size/initial_position_type=0
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/parallax2d_preview/plugin.cfg")
+enabled=PackedStringArray("res://addons/datasaver/plugin.cfg", "res://addons/parallax2d_preview/plugin.cfg")
 
 [input]
 

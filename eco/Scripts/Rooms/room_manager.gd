@@ -21,7 +21,7 @@ signal send_room_to_plant_manager(r: RoomData)
 signal done_with_room(room_id: String)
 
 func _ready() -> void:
-	loaded_rooms["first_room"] = load(SceneDictionary.DataPaths["first_room"])
+	loaded_rooms["first_room"] = load(SaveManager.DataPaths["first_room"])
 	change_room("first_room", "exit1")
 
 func _process(_delta: float) -> void:
@@ -89,8 +89,8 @@ func update_loaded_rooms(new_rooms: Array[String], just_left: RoomFacade, enteri
 	# Add rooms which have entered scope
 	for n in new_rooms:
 		var new_scene: RoomData
-		if !just_left or n != just_left.room_id:
-			var new_path = SceneDictionary.DataPaths[n]
+		if !just_left or n != just_left.data_id:
+			var new_path = SaveManager.DataPaths[n]
 			new_scene = load(new_path)
 			
 		# Special case for the room we just left

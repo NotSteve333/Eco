@@ -31,7 +31,7 @@ func _process(_delta: float) -> void:
 			0:
 				data_to_load = load_queue.pop_back()
 				load_queue_size -= 1
-				facade_path = SceneDictionary.FacadesPaths[data_to_load.get_facade_id()]
+				facade_path = SaveManager.FacadesPaths[data_to_load.get_facade_id()]
 				load_stage = 1
 				continue
 			1:
@@ -60,7 +60,7 @@ func quick_load(q_data: Data) -> Facade:
 		load_stage = 0
 
 	var q_facade_id = q_data.get_facade_id()
-	var q_facade_path = SceneDictionary.FacadesPaths[q_facade_id]
+	var q_facade_path = SaveManager.FacadesPaths[q_facade_id]
 	var q_facade_packed_scene: PackedScene = load(q_facade_path)
 	var q_facade_scene = q_facade_packed_scene.instantiate()
 	q_facade_scene.set_data(q_data)
