@@ -1,68 +1,72 @@
-[gd_scene load_steps=11 format=3 uid="uid://cwo6exyekd4db"]
+[gd_scene load_steps=12 format=3 uid="uid://cwo6exyekd4db"]
 
 [ext_resource type="Script" uid="uid://denhlxcdv7ix4" path="res://Scripts/Plants/plant_facade.gd" id="1_x7lx4"]
+[ext_resource type="Resource" uid="uid://mfjcpgescd7q" path="res://Saves/PlantSpeciesData/split_bulb.tres" id="2_01h4a"]
 [ext_resource type="Texture2D" uid="uid://ehtpn21vrr71" path="res://Sprites/Plants/FINISHED_PLANT_SHEET_1.png" id="2_vdlda"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_0n6fb"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_yfm41"]
 atlas = ExtResource("2_vdlda")
 region = Rect2(0, 0, 1564, 1178)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_bk1wt"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_8m0rn"]
 atlas = ExtResource("2_vdlda")
 region = Rect2(1564, 0, 1564, 1178)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_u2m3a"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_x553n"]
 atlas = ExtResource("2_vdlda")
 region = Rect2(3128, 0, 1564, 1178)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_qn5sh"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_eqfnv"]
 atlas = ExtResource("2_vdlda")
 region = Rect2(4692, 0, 1564, 1178)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_l4tau"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_khlpd"]
 atlas = ExtResource("2_vdlda")
 region = Rect2(6256, 0, 1564, 1178)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_kt7oa"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_kdjwj"]
 atlas = ExtResource("2_vdlda")
 region = Rect2(0, 1178, 1564, 1178)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_qi358"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_uh6mw"]
 atlas = ExtResource("2_vdlda")
 region = Rect2(1564, 1178, 1564, 1178)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_vo8td"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_0bl0m"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_0n6fb")
+"texture": SubResource("AtlasTexture_yfm41")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_bk1wt")
+"texture": SubResource("AtlasTexture_8m0rn")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_u2m3a")
+"texture": SubResource("AtlasTexture_x553n")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_qn5sh")
+"texture": SubResource("AtlasTexture_eqfnv")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_l4tau")
+"texture": SubResource("AtlasTexture_khlpd")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_kt7oa")
+"texture": SubResource("AtlasTexture_kdjwj")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_qi358")
+"texture": SubResource("AtlasTexture_uh6mw")
 }],
 "loop": true,
 "name": &"default",
 "speed": 5.0
 }]
 
-[node name="BasicPlant" type="Node2D"]
+[node name="SplitBulb" type="Node2D"]
 script = ExtResource("1_x7lx4")
+species_data = ExtResource("2_01h4a")
+facade_id = "split_bulb"
 metadata/_custom_type_script = "uid://denhlxcdv7ix4"
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-sprite_frames = SubResource("SpriteFrames_vo8td")
+sprite_frames = SubResource("SpriteFrames_0bl0m")
+frame = 5

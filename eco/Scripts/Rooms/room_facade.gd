@@ -4,9 +4,8 @@ class_name RoomFacade
 
 @export var camera_bounds: Vector4
 # Exits to other rooms
-@export var exits_dict: Dictionary
-@export var exits_pos: Dictionary
-@export var exits_right: Dictionary
+@export var exits_dict: PackedVector2Array
+@export var neighbors: PackedStringArray
 # Watershed region this room resides in
 @export var water_region: Region
 # Light region this room resides in

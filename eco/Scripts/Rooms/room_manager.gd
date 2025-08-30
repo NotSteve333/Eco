@@ -4,6 +4,8 @@ class_name RoomManager
 
 # @export var room_update_budget: float = 15000.0
 
+@export var starting_room: String
+
 # Room the player is in
 var active_room: RoomFacade
 # Rooms in scope (adjacent to current).
@@ -21,8 +23,8 @@ signal send_room_to_plant_manager(r: RoomData)
 signal done_with_room(room_id: String)
 
 func _ready() -> void:
-	loaded_rooms["first_room"] = load(SaveManager.DataPaths["first_room"])
-	change_room("first_room", "exit1")
+	loaded_rooms[starting_room] = load(SaveManager.DataPaths[starting_room])
+	change_room(starting_room, 0)
 
 func _process(_delta: float) -> void:
 	var start_time = Time.get_ticks_usec()
@@ -38,7 +40,7 @@ func _process(_delta: float) -> void:
 			return
 
 # Change the current room and spawn in the player accordingly
-func change_room(room_id: String, exit_id: String) -> void:
+func change_room(room_id: String, exit_id: int) -> void:
 	remove_child(active_room)
 	var r = loaded_rooms[room_id]
 	update_loaded_rooms(r.get_neighbors(), active_room, room_id)
@@ -55,7 +57,7 @@ func finished_plants(room_id: String) -> void:
 	%LoadManager.add_data_to_queue(loaded_rooms[room_id])
 
 # Play enter room animation
-func enter_room(exit_id: String) -> void:
+func enter_room(exit_id: int) -> void:
 	spawn_in.emit(active_room.get_data().get_exit_location(exit_id), active_room.get_lims())
 
 # Initiate update chain for each room

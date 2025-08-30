@@ -5,9 +5,8 @@ class_name RoomData
 # Size/Shape of room
 @export var camera_bounds: Vector4
 # Exits to other rooms
-@export var exits_dict: Dictionary
-@export var exits_pos: Dictionary
-@export var exits_right: Dictionary
+@export var neighbors: PackedStringArray
+@export var exits_dict: PackedVector2Array
 # Watershed region this room resides in
 @export var water_region: Region
 # Light region this room resides in
@@ -88,14 +87,9 @@ func set_last_update(time: float) -> void:
 	last_update = time
 
 # Gets where the player should enter this room from based on the exit they used
-func get_exit_location(exit_id: String) -> Vector2:
-	return exits_pos[exit_id] + MathUtil.bool_to_unit(exits_right[exit_id]) * exits_dict[exit_id].get_spawn_point()
+func get_exit_location(exit_id: int) -> Vector2:
+	return exits_dict[exit_id]
 
 # Get rooms adjacent to this one
 func get_neighbors() -> PackedStringArray:
-	var neighbors = []
-	for e in exits_dict:
-		var neighbor = exits_dict[e].get_other_end(facade_id)
-		if !(neighbor in neighbors):
-			neighbors.append(neighbor)
 	return neighbors

@@ -1,0 +1,106 @@
+[gd_scene load_steps=14 format=3 uid="uid://dpsbuo3smc6xc"]
+
+[ext_resource type="Script" uid="uid://c5or3l62fkv5v" path="res://Scripts/Rooms/room_facade.gd" id="1_rrmig"]
+[ext_resource type="PackedScene" uid="uid://cwo6exyekd4db" path="res://Scenes/Plants/split_bulb.tscn" id="2_j5t8t"]
+[ext_resource type="Script" uid="uid://b84u2u2wq2fvw" path="res://Scripts/Plants/plant_data.gd" id="2_q6do1"]
+[ext_resource type="Script" uid="uid://closnh0s0jmm" path="res://Scripts/Rooms/room_data.gd" id="3_daa1m"]
+[ext_resource type="Script" uid="uid://q51kpwsicyl0" path="res://Scripts/BaseClasses/surface.gd" id="4_5nhcq"]
+[ext_resource type="Resource" uid="uid://mfjcpgescd7q" path="res://Saves/PlantSpeciesData/split_bulb.tres" id="6_iae7h"]
+[ext_resource type="PackedScene" uid="uid://c75hkin8bp6a2" path="res://Scenes/Rooms/Exits/room_exit.tscn" id="7_daa1m"]
+[ext_resource type="Script" uid="uid://pn4tx8l64mqy" path="res://Scripts/Rooms/custom_parallax.gd" id="7_r2d0m"]
+
+[sub_resource type="Resource" id="Resource_q6do1"]
+script = ExtResource("3_daa1m")
+camera_bounds = Vector4(-3840, -1920, 3840, 1920)
+neighbors = PackedStringArray("first_room")
+exits_dict = PackedVector2Array(-305, -768)
+plants = Array[ExtResource("2_q6do1")]([])
+surfaces = Array[ExtResource("4_5nhcq")]([])
+last_update = 0.0
+facade_id = "hive_room"
+data_id = "hive_room"
+
+[sub_resource type="Resource" id="Resource_daa1m"]
+script = ExtResource("2_q6do1")
+species_data = ExtResource("6_iae7h")
+room_id = "hive_room"
+position_in_room = Vector2(0, 0)
+growth_stage = 4
+facade_id = "split_bulb"
+data_id = "bulb1"
+
+[sub_resource type="Resource" id="Resource_5nhcq"]
+script = ExtResource("2_q6do1")
+species_data = ExtResource("6_iae7h")
+room_id = "hive_room"
+position_in_room = Vector2(-1729, -773)
+growth_stage = 5
+facade_id = "split_bulb"
+data_id = "bulb2"
+
+[sub_resource type="Resource" id="Resource_iae7h"]
+script = ExtResource("2_q6do1")
+species_data = ExtResource("6_iae7h")
+room_id = "hive_room"
+position_in_room = Vector2(1168, -586)
+growth_stage = 1
+facade_id = "split_bulb"
+data_id = "bulb3"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_daa1m"]
+size = Vector2(5242, 536)
+
+[node name="HiveRoom" type="Node2D"]
+script = ExtResource("1_rrmig")
+camera_bounds = Vector4(-3840, -1920, 3840, 1920)
+exits_dict = PackedVector2Array(-305, -768)
+facade_id = "hive_room"
+data_id = "hive_room"
+data = SubResource("Resource_q6do1")
+metadata/_custom_type_script = "uid://c5or3l62fkv5v"
+
+[node name="Plants" type="Node" parent="."]
+
+[node name="SplitBulb" parent="Plants" instance=ExtResource("2_j5t8t")]
+room_id = "hive_room"
+growth_stage = 4
+data_id = "bulb1"
+data = SubResource("Resource_daa1m")
+
+[node name="SplitBulb2" parent="Plants" instance=ExtResource("2_j5t8t")]
+position = Vector2(-1729, -773)
+room_id = "hive_room"
+position_in_room = Vector2(-1729, -773)
+growth_stage = 5
+data_id = "bulb2"
+data = SubResource("Resource_5nhcq")
+
+[node name="SplitBulb3" parent="Plants" instance=ExtResource("2_j5t8t")]
+position = Vector2(1168, -586)
+room_id = "hive_room"
+position_in_room = Vector2(1168, -586)
+growth_stage = 1
+data_id = "bulb3"
+data = SubResource("Resource_iae7h")
+
+[node name="Exits" type="Node" parent="."]
+
+[node name="RoomExit" parent="Exits" instance=ExtResource("7_daa1m")]
+position = Vector2(-305, -768)
+exit_id = "0"
+room_id_1 = "hive_room"
+room_id_2 = "first_room"
+
+[node name="Terrain" type="Node" parent="."]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Terrain"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Terrain/StaticBody2D"]
+position = Vector2(184, 719)
+shape = SubResource("RectangleShape2D_daa1m")
+
+[node name="Background" type="Node2D" parent="."]
+
+[node name="CustomParallax" type="Parallax2D" parent="Background"]
+script = ExtResource("7_r2d0m")
+metadata/_custom_type_script = "uid://pn4tx8l64mqy"

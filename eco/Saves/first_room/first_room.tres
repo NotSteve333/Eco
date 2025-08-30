@@ -7,11 +7,10 @@
 [resource]
 script = ExtResource("2_xhk5d")
 camera_bounds = Vector4(0, 0, 0, 0)
-exits_dict = {}
-exits_pos = {}
-exits_right = {}
+neighbors = PackedStringArray("first_room", "first_room", "first_room", "first_room", "first_room", "first_room", "first_room", "first_room", "first_room", "first_room", "first_room", "first_room", "first_room", "first_room", "first_room", "first_room", "first_room", "first_room", "first_room", "first_room", "first_room", "first_room", "first_room", "first_room", "first_room", "first_room", "first_room", "first_room", "first_room", "first_room", "first_room", "hive_room", "hive_room")
+exits_dict = PackedVector2Array(-305, -768, -305, -768, -305, -768, -305, -768, -305, -768, -305, -768, -305, -768, -305, -768, -305, -768, -305, -768, -305, -768, -305, -768, -305, -768, -305, -768, -305, -768, -305, -768, -305, -768, -305, -768, -305, -768, -305, -768, -305, -768, -305, -768, -305, -768, -305, -768, -305, -768, -305, -768, -305, -768, -305, -768, -305, -768, -305, -768, 0, 0, 0, 0)
 plants = Array[ExtResource("1_wesde")]([])
 surfaces = Array[ExtResource("3_6nq0y")]([])
 last_update = 0.0
-facade_id = ""
-data_id = ""
+facade_id = "first_room"
+data_id = "first_room"

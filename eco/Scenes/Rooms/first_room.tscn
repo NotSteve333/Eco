@@ -1,9 +1,22 @@
-[gd_scene load_steps=6 format=3 uid="uid://cpu2yr0fglapj"]
+[gd_scene load_steps=9 format=3 uid="uid://cpu2yr0fglapj"]
 
 [ext_resource type="Script" uid="uid://c5or3l62fkv5v" path="res://Scripts/Rooms/room_facade.gd" id="1_jovsq"]
-[ext_resource type="PackedScene" uid="uid://c75hkin8bp6a2" path="res://Scenes/Rooms/Exits/room_exit_facade.tscn" id="2_a04uu"]
-[ext_resource type="Texture2D" uid="uid://bwme0m4d6g0ut" path="res://icon.svg" id="3_jovsq"]
+[ext_resource type="PackedScene" uid="uid://c75hkin8bp6a2" path="res://Scenes/Rooms/Exits/room_exit.tscn" id="2_a04uu"]
+[ext_resource type="Script" uid="uid://b84u2u2wq2fvw" path="res://Scripts/Plants/plant_data.gd" id="2_tl5uq"]
 [ext_resource type="Texture2D" uid="uid://gbh2aikuxjdv" path="res://Sprites/Backgrounds/First-Scene-FLATTENED-FOR-EXPORT_0001_GROUNDCOVER.png" id="3_kb36q"]
+[ext_resource type="Script" uid="uid://closnh0s0jmm" path="res://Scripts/Rooms/room_data.gd" id="3_yb6rr"]
+[ext_resource type="Script" uid="uid://q51kpwsicyl0" path="res://Scripts/BaseClasses/surface.gd" id="4_wyfju"]
+
+[sub_resource type="Resource" id="Resource_ur8j2"]
+script = ExtResource("3_yb6rr")
+camera_bounds = Vector4(0, 0, 0, 0)
+neighbors = PackedStringArray("first_room")
+exits_dict = PackedVector2Array(-305, -768, -305, -768, -305, -768, -305, -768, -305, -768, -305, -768, -305, -768, -305, -768, -305, -768, -305, -768, -305, -768, -305, -768, -305, -768, -305, -768, -305, -768, -305, -768, -305, -768, -305, -768, -305, -768, -305, -768, -305, -768, -305, -768, -305, -768, -305, -768, -305, -768, -305, -768, -305, -768, -305, -768, -305, -768, -305, -768, 0, 0, 0, 0)
+plants = Array[ExtResource("2_tl5uq")]([])
+surfaces = Array[ExtResource("4_wyfju")]([])
+last_update = 0.0
+facade_id = "first_room"
+data_id = "first_room"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jovsq"]
 size = Vector2(3687.75, 234)
@@ -12,18 +25,15 @@ size = Vector2(3687.75, 234)
 script = ExtResource("1_jovsq")
 facade_id = "first_room"
 data_id = "first_room"
+data = SubResource("Resource_ur8j2")
 metadata/_custom_type_script = "uid://c5or3l62fkv5v"
 
 [node name="Exits" type="Node" parent="."]
 
 [node name="RoomExit" parent="Exits" instance=ExtResource("2_a04uu")]
-position = Vector2(1920, 0)
-scale = Vector2(5, 100)
-exit_id = "exit1"
-
-[node name="Sprite2D2" type="Sprite2D" parent="Exits/RoomExit"]
-position = Vector2(53.4, -0.08)
-texture = ExtResource("3_jovsq")
+exit_id = "0"
+room_id_1 = "first_room"
+room_id_2 = "hive_room"
 
 [node name="Plants" type="Node" parent="."]
 
@@ -39,5 +49,3 @@ texture = ExtResource("3_kb36q")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Terrain/Floor"]
 position = Vector2(-13, 1118)
 shape = SubResource("RectangleShape2D_jovsq")
-
-[connection signal="player_exit" from="Exits/RoomExit" to="." method="player_exit"]

@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="RoomData" load_steps=4 format=3 uid="uid://x51plo4borj0"]
+
+[ext_resource type="Script" uid="uid://b84u2u2wq2fvw" path="res://Scripts/Plants/plant_data.gd" id="1_cxly1"]
+[ext_resource type="Script" uid="uid://closnh0s0jmm" path="res://Scripts/Rooms/room_data.gd" id="2_773e6"]
+[ext_resource type="Script" uid="uid://q51kpwsicyl0" path="res://Scripts/BaseClasses/surface.gd" id="3_eur3q"]
+
+[resource]
+script = ExtResource("2_773e6")
+camera_bounds = Vector4(-3840, -1920, 3840, 1920)
+neighbors = PackedStringArray("first_room")
+exits_dict = PackedVector2Array(-305, -768)
+plants = Array[ExtResource("1_cxly1")]([])
+surfaces = Array[ExtResource("3_eur3q")]([])
+last_update = 0.0
+facade_id = "hive_room"
+data_id = "hive_room"

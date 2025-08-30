@@ -1,7 +1,7 @@
 [gd_scene load_steps=18 format=3 uid="uid://bycs04w2ra0aq"]
 
 [ext_resource type="Script" uid="uid://c5or3l62fkv5v" path="res://Scripts/Rooms/room_facade.gd" id="1_4frrt"]
-[ext_resource type="PackedScene" uid="uid://c75hkin8bp6a2" path="res://Scenes/Rooms/Exits/room_exit_facade.tscn" id="2_a04uu"]
+[ext_resource type="PackedScene" uid="uid://c75hkin8bp6a2" path="res://Scenes/Rooms/Exits/room_exit.tscn" id="2_a04uu"]
 [ext_resource type="Script" uid="uid://b84u2u2wq2fvw" path="res://Scripts/Plants/plant_data.gd" id="2_pnfen"]
 [ext_resource type="Script" uid="uid://pn4tx8l64mqy" path="res://Scripts/Rooms/custom_parallax.gd" id="3_5wyt6"]
 [ext_resource type="Texture2D" uid="uid://bwme0m4d6g0ut" path="res://icon.svg" id="3_7qxq7"]
@@ -17,9 +17,8 @@
 [sub_resource type="Resource" id="Resource_pnfen"]
 script = ExtResource("3_ocg2f")
 camera_bounds = Vector4(0, 0, 0, 0)
-exits_dict = {}
-exits_pos = {}
-exits_right = {}
+neighbors = PackedStringArray()
+exits_dict = PackedVector2Array()
 plants = Array[ExtResource("2_pnfen")]([])
 surfaces = Array[ExtResource("4_hsctp")]([])
 last_update = 0.0
@@ -66,7 +65,6 @@ texture = ExtResource("3_7qxq7")
 position = Vector2(-611, 404)
 room_id = "second_room"
 position_in_room = Vector2(-611, 404)
-facade_id = "split_bulb"
 data_id = "plant1"
 data = SubResource("Resource_ocg2f")
 

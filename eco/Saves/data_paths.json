@@ -1,3 +1,11 @@
 {
+	"": "res://Saves//.tres",
+	"SaveManager": "res://Saves/bulb3.tres",
+	"bulb1": "res://Saves/hive_room/Plants/bulb1.tres",
+	"bulb2": "res://Saves/hive_room/Plants/bulb2.tres",
+	"bulb3": "res://Saves/hive_room/Plants/bulb3.tres",
+	"first_room": "res://Saves/first_room/first_room.tres",
+	"hive_room": "res://Saves/hive_room/hive_room.tres",
+	"hive_roon": "res://Saves/hive_roon/hive_roon.tres",
 	"source": "res://Saves/data_paths.json"
 }

@@ -20,6 +20,7 @@ metadata/_custom_type_script = "uid://dgmimxdcjt3xb"
 
 [node name="RoomManager" type="Node" parent="."]
 script = ExtResource("2_vvh5c")
+starting_room = "hive_room"
 metadata/_custom_type_script = "uid://dgbv2gxf1ve6r"
 
 [connection signal="finish_room" from="PlantManager" to="RoomManager" method="finished_plants"]

@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://c75hkin8bp6a2"]
+
+[ext_resource type="Script" uid="uid://dpk05eowpbvfd" path="res://Scripts/Rooms/RoomExit/room_exit_facade.gd" id="1_tg3bb"]
+[ext_resource type="Texture2D" uid="uid://bwme0m4d6g0ut" path="res://icon.svg" id="2_auvvx"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lvplm"]
+
+[node name="RoomExit" type="Node2D"]
+script = ExtResource("1_tg3bb")
+metadata/_custom_type_script = "uid://dpk05eowpbvfd"
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(51, 1)
+scale = Vector2(1.3168, 5.21355)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(1.51883, -0.191808)
+scale = Vector2(0.803697, 0.79803)
+shape = SubResource("RectangleShape2D_lvplm")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(51, 2)
+scale = Vector2(0.128591, 0.79803)
+texture = ExtResource("2_auvvx")
+
+[connection signal="body_entered" from="Area2D" to="." method="recieve_exit"]

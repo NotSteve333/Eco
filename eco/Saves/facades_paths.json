@@ -1,3 +1,8 @@
 {
-	"source": "res://Saves/facades_paths.json"
+	"": "res://Scenes/Rooms/.tscn",
+	"first_room": "res://Scenes/Rooms/first_room.tscn",
+	"hive_room": "res://Scenes/Rooms/hive_room.tscn",
+	"hive_roon": "res://Scenes/Rooms/hive_roon.tscn",
+	"source": "res://Saves/facades_paths.json",
+	"split_bulb": "res://Scenes/Plants/split_bulb.tscn"
 }

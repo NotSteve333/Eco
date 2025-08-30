@@ -4,3 +4,4 @@
 
 [node name="RoomManager" type="Node"]
 script = ExtResource("1_b5jqn")
+starting_room = "hive_room"
