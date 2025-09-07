@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="PlantData" load_steps=3 format=3 uid="uid://dvpgyritpfj6o"]
+
+[ext_resource type="Script" uid="uid://b84u2u2wq2fvw" path="res://Scripts/Plants/plant_data.gd" id="1_lesfu"]
+[ext_resource type="Resource" uid="uid://mfjcpgescd7q" path="res://Saves/PlantSpeciesData/split_bulb.tres" id="2_r8bpu"]
+
+[resource]
+script = ExtResource("1_lesfu")
+species_data = ExtResource("2_r8bpu")
+room_id = "hive_room"
+position_in_room = Vector2(0, 0)
+growth_stage = 0
+facade_id = "split_bulb"
+data_id = "bulb_1"

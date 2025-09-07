@@ -1,9 +1,0 @@
-[gd_resource type="Resource" script_class="ExitConnection" load_steps=2 format=3 uid="uid://bpjpb015n8dp"]
-
-[ext_resource type="Script" uid="uid://pqopnggvfyf0" path="res://exit_connection.gd" id="1_iauqx"]
-
-[resource]
-script = ExtResource("1_iauqx")
-room_id_1 = "\"first_room\""
-room_id_2 = "\"second_room\""
-metadata/_custom_type_script = "uid://pqopnggvfyf0"

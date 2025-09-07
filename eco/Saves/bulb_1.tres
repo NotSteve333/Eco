@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="PlantData" load_steps=2 format=3 uid="uid://0il3a8pwj8fk"]
+
+[ext_resource type="Script" uid="uid://b84u2u2wq2fvw" path="res://Scripts/Plants/plant_data.gd" id="1_xpr62"]
+
+[resource]
+script = ExtResource("1_xpr62")
+room_id = ""
+position_in_room = Vector2(0, 0)
+growth_stage = 0
+facade_id = ""
+data_id = ""

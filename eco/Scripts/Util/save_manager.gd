@@ -18,7 +18,6 @@ func save_room(facade: RoomFacade) -> void:
 	for e in facade.get_node("Exits").get_children():
 		facade.exits_dict.append(e.position)
 		if facade.facade_id != e.room_id_1:
-			
 			facade.neighbors.append(e.room_id_1)
 		else:
 			facade.neighbors.append(e.room_id_2)
@@ -37,7 +36,7 @@ func save_room(facade: RoomFacade) -> void:
 	DataPaths[data.data_id] = filepath
 	ResourceSaver.save(data, filepath)
 	
-func save_plant(facade: PlantFacade, room: String) -> void:
+func save_plant(facade: PlantFacade, room: String) -> PlantData:
 	FacadesPaths[facade.facade_id] = str("res://Scenes/Plants/", facade.facade_id, ".tscn")
 	if !facade.get("data"):
 		facade.data = create_plant_data(facade, facade.data_id)
@@ -54,6 +53,7 @@ func save_plant(facade: PlantFacade, room: String) -> void:
 	DataPaths[data.data_id] = filepath
 	if not FileAccess.file_exists(filepath):
 		ResourceSaver.save(data, filepath)
+	return data
 
 func get_species_data(name: String) -> PlantSpeciesData:
 	var filepath = str("res://Saves/PlantSpeciesData/", name, ".tres")
@@ -67,6 +67,20 @@ func get_species_data(name: String) -> PlantSpeciesData:
 
 func _ready() -> void:
 	load_from_json()
+	
+func load_plant(data: PlantData) -> PlantFacade:
+	var plant_name = data.facade_id
+	var new_facade = load(FacadesPaths[plant_name]).instantiate()
+	new_facade.data_id = data.data_id
+	new_facade.facade_id = data.facade_id
+	new_facade.species_data = data.species_data
+	new_facade.room_id = data.room_id
+	new_facade.position_in_room = data.position_in_room
+	new_facade.position = new_facade.position_in_room
+	new_facade.name = new_facade.data_id
+	new_facade.growth_stage = data.growth_stage
+	new_facade.data = data
+	return new_facade
 
 func write_to_json() -> void:
 	write_dictionary_to_json(FacadesPaths)
