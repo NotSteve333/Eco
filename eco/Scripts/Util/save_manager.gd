@@ -3,10 +3,10 @@ extends Manager
 # Manages the creation, editing, and loading of files on disk
 
 var FacadesPaths: Dictionary
-var facade_source: String = "res://Saves/facades_paths.json"
+var facade_source: String = "res://Saves/Registers/facades_paths.json"
 
 var DataPaths: Dictionary
-var data_source: String = "res://Saves/data_paths.json"
+var data_source: String = "res://Saves/Registers/data_paths.json"
 
 func save_room(facade: RoomFacade) -> void:
 	FacadesPaths[facade.facade_id] = str("res://Scenes/Rooms/", facade.facade_id, ".tscn")
@@ -31,15 +31,15 @@ func save_room(facade: RoomFacade) -> void:
 	data.temp_region = facade.get("temp_region")
 	data.pol_region = facade.get("pol_region")
 	data.last_update = facade.get("last_update")
-	var filepath: String = str("res://Saves/", facade.facade_id, "/", facade.facade_id, ".tres")
-	
+	var filepath: String = str("res://Saves/Rooms/", facade.facade_id, "/", facade.facade_id, ".tres")
 	DataPaths[data.data_id] = filepath
 	ResourceSaver.save(data, filepath)
+	EditorInterface.get_resource_filesystem().update_file(filepath)
 	
 func save_plant(facade: PlantFacade, room: String) -> PlantData:
 	FacadesPaths[facade.facade_id] = str("res://Scenes/Plants/", facade.facade_id, ".tscn")
 	if !facade.get("data"):
-		facade.data = create_plant_data(facade, facade.data_id)
+		facade.data = create_plant_data(facade, room)
 	var data: PlantData = facade.data
 	data.data_id = facade.get("data_id")
 	data.facade_id = facade.get("facade_id")
@@ -49,14 +49,15 @@ func save_plant(facade: PlantFacade, room: String) -> PlantData:
 	facade.position_in_room = facade.get("position")
 	data.position_in_room = facade.get("position_in_room")
 	data.growth_stage = facade.get("growth_stage")
-	var filepath: String = str("res://Saves/", room, "/Plants/", data.data_id, ".tres")
+	var filepath: String = str("res://Saves/Rooms/", room, "/Plants/", data.data_id, ".tres")
 	DataPaths[data.data_id] = filepath
 	if not FileAccess.file_exists(filepath):
 		ResourceSaver.save(data, filepath)
+	EditorInterface.get_resource_filesystem().update_file(filepath)
 	return data
 
-func get_species_data(name: String) -> PlantSpeciesData:
-	var filepath = str("res://Saves/PlantSpeciesData/", name, ".tres")
+func get_species_data(species_name: String) -> PlantSpeciesData:
+	var filepath = str("res://Saves/PlantSpeciesData/", species_name, ".tres")
 	var data: PlantSpeciesData
 	if not FileAccess.file_exists(filepath):
 		data = PlantSpeciesData.new()
@@ -106,20 +107,20 @@ func load_dictionary_from_json(source: String) -> Dictionary:
 	var result = JSON.parse_string(content)
 	return result
 	
-func create_plant_data(facade: PlantFacade, room_and_name: String) -> PlantData:
+func create_plant_data(facade: PlantFacade, room: String) -> PlantData:
 	var new_data: Data
 	var data_path: String
 	new_data = PlantData.new()
-	data_path = str("res://Saves/", room_and_name, ".tres")
+	data_path = str("res://Saves/Rooms/", room, "/Plants/", facade.data_id, ".tres")
 	ResourceSaver.save(new_data, data_path)
 	DataPaths[name] = data_path
 	return new_data
 	
-func create_room_data(facade: RoomFacade, name: String) -> RoomData:
+func create_room_data(facade: RoomFacade, room_name: String) -> RoomData:
 	var new_data: Data
 	var data_path: String
 	new_data = RoomData.new()
-	data_path = str("res://Saves/", facade.facade_id, "/", name, ".tres")
+	data_path = str("res://Saves/Rooms/", facade.facade_id, "/", room_name, ".tres")
 	ResourceSaver.save(new_data, data_path)
 	DataPaths[name] = data_path
 	return new_data

@@ -28,6 +28,7 @@ signal room_data_ready(id: String)
 
 func update() -> void:
 	conditions_dict = combine_conditions()
+	print("ready")
 	room_data_ready.emit(facade_id)
 
 func get_region_conditions() -> Dictionary:

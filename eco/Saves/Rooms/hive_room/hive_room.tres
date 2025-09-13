@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="RoomData" load_steps=8 format=3 uid="uid://x51plo4borj0"]
+
+[ext_resource type="Script" uid="uid://b84u2u2wq2fvw" path="res://Scripts/Plants/plant_data.gd" id="1_cxly1"]
+[ext_resource type="Resource" uid="uid://cheauwupiuw62" path="res://Saves/Regions/light_1.tres" id="1_ryrpa"]
+[ext_resource type="Script" uid="uid://closnh0s0jmm" path="res://Scripts/Rooms/room_data.gd" id="2_773e6"]
+[ext_resource type="Script" uid="uid://q51kpwsicyl0" path="res://Scripts/BaseClasses/surface.gd" id="3_eur3q"]
+[ext_resource type="Resource" uid="uid://bwrrruwafvtdh" path="res://Saves/Regions/pol_1.tres" id="3_jtpnx"]
+[ext_resource type="Resource" uid="uid://bvc35q4c7tl8s" path="res://Saves/Regions/temp_1.tres" id="6_8j34x"]
+[ext_resource type="Resource" uid="uid://c6j008v6wxkkn" path="res://Saves/Regions/water_1.tres" id="7_aon4f"]
+
+[resource]
+script = ExtResource("2_773e6")
+camera_bounds = Vector4(-3840, -1920, 3840, 1920)
+neighbors = PackedStringArray("first_room")
+exits_dict = PackedVector2Array(-305, -768)
+water_region = ExtResource("7_aon4f")
+light_region = ExtResource("1_ryrpa")
+temp_region = ExtResource("6_8j34x")
+pol_region = ExtResource("3_jtpnx")
+plants = Array[ExtResource("1_cxly1")]([])
+surfaces = Array[ExtResource("3_eur3q")]([])
+last_update = 0.0
+facade_id = "hive_room"
+data_id = "hive_room"

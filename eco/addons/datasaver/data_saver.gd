@@ -16,7 +16,6 @@ func _enter_tree():
 	# Add the loaded scene to the docks.
 	add_control_to_dock(DOCK_SLOT_LEFT_UL, dock)
 	save_or_load_to_file(false)
-	
 
 func save_or_load_to_file(save: bool) -> void:
 	if save:
@@ -25,16 +24,21 @@ func save_or_load_to_file(save: bool) -> void:
 		SaveManager.load_from_json()
 
 func save_or_load_scene(save: bool) -> void:
-	var check_for_change = get_editor_interface().get_edited_scene_root()
+	var check_for_change = EditorInterface.get_edited_scene_root()
 	if check_for_change != active_scene:
 		active_scene = check_for_change
 		is_scene_loaded = false
 	if save and is_scene_loaded:
 		save_scene()
 		is_scene_loaded = false
+		print("Scene Saved")
 	elif !save and !is_scene_loaded:
 		load_scene()
 		is_scene_loaded = true
+		print("Scene Loaded")
+	
+	EditorInterface.get_resource_filesystem().scan()
+
 
 func save_scene() -> void:
 	var plants: Array[Node]
@@ -58,7 +62,6 @@ func load_scene() -> void:
 	for p in plants_to_load:
 		var new_plant = SaveManager.load_plant(p)
 		add_child_to_selected(new_plant, plant_hinge)
-		print(new_plant.position)
 		
 func add_child_to_selected(node: Node, parent: Node):
 	var undo_redo = get_undo_redo()
@@ -69,9 +72,6 @@ func add_child_to_selected(node: Node, parent: Node):
 	undo_redo.commit_action()
 	
 func _exit_tree():
-	# Clean-up of the plugin goes here.
-	# Remove the dock.
 	remove_control_from_docks(dock)
 	save_or_load_to_file(true)
-	# Erase the control from the memory.
 	dock.free()

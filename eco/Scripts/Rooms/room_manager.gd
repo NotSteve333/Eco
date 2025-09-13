@@ -64,9 +64,11 @@ func enter_room(exit_id: int) -> void:
 func update_rooms() -> void:
 	for r_id in loaded_rooms:
 		load_room_queue.append(loaded_rooms[r_id])
+		load_room_queue_amt += loaded_rooms.size()
 
 # Tell the plant_manager to start processing plants in this room
 func send_plants_to_manager(room_id: String) -> void:
+	print("send")
 	send_room_to_plant_manager.emit(loaded_rooms[room_id])
 
 # Move rooms, instantiate, and free rooms based on change in scope
