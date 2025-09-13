@@ -5,6 +5,8 @@ class_name Player
 @onready var camera = %Camera2D
 @onready var animation = $AnimatedSprite2D
 
+
+
 @export var speed = 300.0
 
 var dir_x: float

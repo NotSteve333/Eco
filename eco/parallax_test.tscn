@@ -13,7 +13,6 @@ size = Vector2(3830.75, 152)
 [node name="ParallaxTest" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("1_j2haq")]
-z_index = 1
 scale = Vector2(1.79827, 1.79827)
 speed = 600.0
 
